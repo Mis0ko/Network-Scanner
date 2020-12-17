@@ -5,119 +5,722 @@ Device is open
 
 
 TRAME 1
-30 7c b2 59 e4 29 1c 1b b5 b3 26 21 86 dd 60 04 3f a9 00 53 06 40 2a 01 cb 10 05 a2 e1 00 5d bb b1 a5 f8 7a f3 37 2a 03 28 80 f0 1c 80 0e fa ce b0 0c 00 00 00 02 d5 38 01 bb 26 12 23 d5 57 60 6d a4 80 18 01 f5 6e 93 00 00 01 01 08 0a ec 2b 75 cb 13 87 db 64 17 03 03 00 2e 14 46 ea be 53 25 46 8c b0 88 1f 57 52 31 05 e1 95 39 c5 20 89 0b 91 8b 48 ba 27 6c d3 cb a8 f1 59 2e 35 ee 9c 01 e9 4a f3 c9 14 2d a0 64 
+30 7c b2 59 e4 29 1c 1b b5 b3 26 21 08 00 45 00 00 3c 89 ef 40 00 40 06 e3 ba c0 a8 01 22 28 4d e2 fa b6 1a 01 bb 50 f1 03 6e 00 00 00 00 a0 02 fa f0 0f 2f 00 00 02 04 05 b4 04 02 08 0a fd fe 66 9a 00 00 00 00 01 03 03 07 
 
 ANALYSE ETHERNET : 
 
 	Destination host address : 30:7c:b2:59:e4:29
 	Source host address : 1c:1b:b5:b3:26:21
 
-ANALYSE ipv6
-	Version : 96
-	Next header : 0x6
-	Payload length : 83
-	Hop limit : 64
-	Flow ID : 1610891177
-	Destination adress : cccv 2a03:2880:f01c:800e:face:b00c:0:2
-	Source adress : cccv 2a01:cb10:5a2:e100:5dbb:b1a5:f87a:f337
+ANALYSE IPv4
+
+	Version : IPv4
+	Header length : 20 bytes
+	Type of service : 0
+	Total length : 60 bytes
+	Identification : 35311
+	Fragment offset field : 64
+	Time to live : 64
+	Type of following protocol : 6
+	Destination address:40.77.226.250
+	Source address: 192.168.1.34
 
 ANALYSE TCP
 
-	Source port : 54584
+	Source port : 46618
 	Destination port : 443
-	Sequence number : 0x261223d5
-	Acknowledgement number : 0x57606da4
+	Sequence number : 0x50f1036e
+	Acknowledgement number : 0x00
+	Data offset : 10
+	 => total size : 40 bytes
+	Flags : 0x02
+		SYN: synchronisation num seq
+	Window : 64240
+	Checksum : 0xf2f
+	Urgent pointer : 0
+
+----------------------------------------------------------
+
+TRAME 2
+1c 1b b5 b3 26 21 30 7c b2 59 e4 29 08 00 45 00 00 3c 38 f9 40 00 6e 06 06 b1 28 4d e2 fa c0 a8 01 22 01 bb b6 1a 73 1f c0 3c 50 f1 03 6f a0 12 20 00 61 55 00 00 02 04 05 a0 01 03 03 08 04 02 08 0a 1b e4 39 8c fd fe 66 9a 
+
+ANALYSE ETHERNET : 
+
+	Destination host address : 1c:1b:b5:b3:26:21
+	Source host address : 30:7c:b2:59:e4:29
+
+ANALYSE IPv4
+
+	Version : IPv4
+	Header length : 20 bytes
+	Type of service : 0
+	Total length : 60 bytes
+	Identification : 14585
+	Fragment offset field : 64
+	Time to live : 110
+	Type of following protocol : 6
+	Destination address:192.168.1.34
+	Source address: 40.77.226.250
+
+ANALYSE TCP
+
+	Source port : 443
+	Destination port : 46618
+	Sequence number : 0x731fc03c
+	Acknowledgement number : 0x50f1036f
+	Data offset : 10
+	 => total size : 40 bytes
+	Flags : 0x12
+		SYN: synchronisation num seq
+		ACK: ACK num seq
+	Window : 8192
+	Checksum : 0x6155
+	Urgent pointer : 0
+
+----------------------------------------------------------
+
+TRAME 3
+30 7c b2 59 e4 29 1c 1b b5 b3 26 21 08 00 45 00 00 34 89 f0 40 00 40 06 e3 c1 c0 a8 01 22 28 4d e2 fa b6 1a 01 bb 50 f1 03 6f 73 1f c0 3d 80 10 01 f6 ad fb 00 00 01 01 08 0a fd fe 66 b7 1b e4 39 8c 
+
+ANALYSE ETHERNET : 
+
+	Destination host address : 30:7c:b2:59:e4:29
+	Source host address : 1c:1b:b5:b3:26:21
+
+ANALYSE IPv4
+
+	Version : IPv4
+	Header length : 20 bytes
+	Type of service : 0
+	Total length : 52 bytes
+	Identification : 35312
+	Fragment offset field : 64
+	Time to live : 64
+	Type of following protocol : 6
+	Destination address:40.77.226.250
+	Source address: 192.168.1.34
+
+ANALYSE TCP
+
+	Source port : 46618
+	Destination port : 443
+	Sequence number : 0x50f1036f
+	Acknowledgement number : 0x731fc03d
+	Data offset : 8
+	 => total size : 32 bytes
+	Flags : 0x10
+		ACK: ACK num seq
+	Window : 502
+	Checksum : 0xadfb
+	Urgent pointer : 0
+
+----------------------------------------------------------
+
+TRAME 4
+30 7c b2 59 e4 29 1c 1b b5 b3 26 21 08 00 45 00 02 39 89 f1 40 00 40 06 e1 bb c0 a8 01 22 28 4d e2 fa b6 1a 01 bb 50 f1 03 6f 73 1f c0 3d 80 18 01 f6 d3 6b 00 00 01 01 08 0a fd fe 66 b8 1b e4 39 8c 16 03 01 02 00 01 00 01 fc 03 03 44 0f 07 04 ad 5e 82 97 37 f1 16 0f 5b 70 8b 68 23 cb 0b a6 28 d0 03 fa ef 8f cf 0f ec 97 b5 73 20 5a 2b 00 00 2e 79 d3 4d b1 e0 d7 13 2b 9b a0 b8 b6 cb 8a ec 4b 75 54 7d 04 f4 33 03 cf fc 94 78 00 24 13 03 13 01 13 02 c0 2f c0 2b c0 30 c0 2c cc a9 cc a8 c0 09 c0 13 c0 0a c0 14 00 9c 00 9d 00 2f 00 35 00 0a 01 00 01 8f 00 00 00 1e 00 1c 00 00 19 76 6f 72 74 65 78 2e 64 61 74 61 2e 6d 69 63 72 6f 73 6f 66 74 2e 63 6f 6d 00 17 00 00 ff 01 00 01 00 00 0a 00 08 00 06 00 1d 00 17 00 18 00 0b 00 02 01 00 00 23 00 00 00 0d 00 14 00 12 04 03 08 04 04 01 05 03 08 05 05 01 08 06 06 01 02 01 00 33 00 26 00 24 00 1d 00 20 46 60 90 b0 75 12 96 b0 7e 5f 24 fb ac 0f 8d 93 81 39 14 7c 99 5b ca e0 c3 6a 30 99 83 31 e7 27 00 2d 00 02 01 01 00 2b 00 05 04 03 04 03 03 00 15 00 f9 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 
+
+ANALYSE ETHERNET : 
+
+	Destination host address : 30:7c:b2:59:e4:29
+	Source host address : 1c:1b:b5:b3:26:21
+
+ANALYSE IPv4
+
+	Version : IPv4
+	Header length : 20 bytes
+	Type of service : 0
+	Total length : 569 bytes
+	Identification : 35313
+	Fragment offset field : 64
+	Time to live : 64
+	Type of following protocol : 6
+	Destination address:40.77.226.250
+	Source address: 192.168.1.34
+
+ANALYSE TCP
+
+	Source port : 46618
+	Destination port : 443
+	Sequence number : 0x50f1036f
+	Acknowledgement number : 0x731fc03d
+	Data offset : 8
+	 => total size : 32 bytes
+	Flags : 0x18
+		PUSH: receiver must push data to app and doesnt wait the tampon filling
+		ACK: ACK num seq
+	Window : 502
+	Checksum : 0xd36b
+	Urgent pointer : 0
+
+----------------------------------------------------------
+
+TRAME 5
+1c 1b b5 b3 26 21 30 7c b2 59 e4 29 08 00 45 00 05 dc 38 fa 40 00 6e 06 01 10 28 4d e2 fa c0 a8 01 22 01 bb b6 1a 73 1f c0 3d 50 f1 05 74 80 10 04 05 95 45 00 00 01 01 08 0a 1b e4 39 ac fd fe 66 b8 16 03 03 0e b1 02 00 00 51 03 03 5f db 90 96 a8 1d 21 22 dd 66 c1 6b ef ab c0 93 f3 57 0b 3f 1d 97 6a 94 27 2a 19 34 10 6d 88 30 20 0c 47 00 00 2d 23 a4 0d bc 36 9f 21 49 d3 5e 31 0e 26 12 ab 78 19 35 a6 94 3d 91 b5 2d 68 d1 91 c0 2f 00 00 09 00 17 00 00 ff 01 00 01 00 0b 00 0d 28 00 0d 25 00 07 c1 30 82 07 bd 30 82 05 a5 a0 03 02 01 02 02 13 7f 00 00 60 63 de 96 e9 1c 68 8c f9 28 00 00 00 00 60 63 30 0d 06 09 2a 86 48 86 f7 0d 01 01 0b 05 00 30 4f 31 0b 30 09 06 03 55 04 06 13 02 55 53 31 1e 30 1c 06 03 55 04 0a 13 15 4d 69 63 72 6f 73 6f 66 74 20 43 6f 72 70 6f 72 61 74 69 6f 6e 31 20 30 1e 06 03 55 04 03 13 17 4d 69 63 72 6f 73 6f 66 74 20 52 53 41 20 54 4c 53 20 43 41 20 30 32 30 1e 17 0d 32 30 31 30 30 35 32 31 32 39 31 31 5a 17 0d 32 31 31 30 30 35 32 31 32 39 31 31 5a 30 26 31 24 30 22 06 03 55 04 03 0c 1b 2a 2e 76 6f 72 74 65 78 2e 64 61 74 61 2e 6d 69 63 72 6f 73 6f 66 74 2e 63 6f 6d 30 82 01 22 30 0d 06 09 2a 86 48 86 f7 0d 01 01 01 05 00 03 82 01 0f 00 30 82 01 0a 02 82 01 01 00 e5 6f 69 77 0a f7 6d d2 2e 5d 95 1d 30 64 47 6d 39 b9 2b 55 ea ad bb 2d a6 c9 7e 89 77 92 50 73 87 9e 70 15 b3 7b 5f 64 c4 57 b7 3b 16 55 af fc 20 c0 02 96 a5 aa 50 76 1e 70 ef 79 c1 4c b3 5a 91 8e 7d 72 1b 4b 7d 86 54 59 11 14 c6 38 24 12 cb a4 e6 a3 db f9 b9 c6 4f 8a c9 ae fd 2a be e1 b9 6a 17 12 57 a9 e0 1e cf 44 e4 c9 a9 9b fc e5 28 03 94 9a ee e6 7e 5a 3a b0 dd cc 34 a8 fd 8a 3a 4a d8 8e 7a 64 3f ef b1 23 48 ee 7b 2a d1 aa be 6f aa 51 27 1d ad 3a 2c c4 b2 50 0d 2b 32 6a 30 60 10 ec 7d 95 93 0e d3 45 58 24 01 df 09 17 a0 95 fb c9 93 86 61 26 8c 65 bc 68 66 77 38 c3 02 9a c3 72 87 cd 6c 4d df 68 4f 60 ac e0 e7 c0 7d 71 af 19 59 6b 09 3e c3 ac be 6c cc f0 8b 84 62 98 7a be 4d 99 89 54 a9 f9 59 e1 c2 32 4a 8f 77 f3 38 bf 12 d4 d3 06 a6 30 48 5a ac f6 ea 71 02 03 01 00 01 a3 82 03 b9 30 82 03 b5 30 82 01 03 06 0a 2b 06 01 04 01 d6 79 02 04 02 04 81 f4 04 81 f1 00 ef 00 74 00 7d 3e f2 f8 8f ff 88 55 68 24 c2 c0 ca 9e 52 89 79 2b c5 0e 78 09 7f 2e 6a 97 68 99 7e 22 f0 d7 00 00 01 74 fa b4 4f 32 00 00 04 03 00 45 30 43 02 1f 30 6f 82 59 67 00 b4 0b 9d eb ba 8c b8 fe 4d a0 24 29 f0 93 95 26 14 f9 7b e3 f6 24 46 9b 21 02 20 72 a1 32 ef c2 ec cf 0d ed 1a 40 1e e6 cb 9e 71 da 9f b4 0e 5f 5e 5d 09 25 6a 19 09 ee d7 13 93 00 77 00 ee c0 95 ee 8d 72 64 0f 92 e3 c3 b9 1b c7 12 a3 69 6a 09 7b 4b 6a 1a 14 38 e6 47 b2 cb ed c5 f9 00 00 01 74 fa b4 51 00 00 00 04 03 00 48 30 46 02 21 00 8f a5 23 f8 19 8d c7 58 31 2e 42 d4 fa 4c 47 a8 f3 aa aa 0a 73 f8 64 44 5c 39 7c 33 58 b0 06 b7 02 21 00 ce 5d a5 e7 6c d1 87 4c 86 17 43 f6 bc 9e 9b be 6f 06 ff 48 cd b3 2d f9 f8 2a 05 cb 1c 44 6a f5 30 27 06 09 2b 06 01 04 01 82 37 15 0a 04 1a 30 18 30 0a 06 08 2b 06 01 05 05 07 03 01 30 0a 06 08 2b 06 01 05 05 07 03 02 30 3e 06 09 2b 06 01 04 01 82 37 15 07 04 31 30 2f 06 27 2b 06 01 04 01 82 37 15 08 87 da 86 75 83 ee d9 01 82 c9 85 1b 81 b5 9e 61 85 f4 eb 60 81 5d 85 86 8e 41 87 c2 98 50 02 01 64 02 01 25 30 81 87 06 08 2b 06 01 05 05 07 01 01 04 7b 30 79 30 53 06 08 2b 06 01 05 05 07 30 02 86 47 68 74 74 70 3a 2f 2f 77 77 77 2e 6d 69 63 72 6f 73 6f 66 74 2e 63 6f 6d 2f 70 6b 69 2f 6d 73 63 6f 72 70 2f 4d 69 63 72 6f 73 6f 66 74 25 32 30 52 53 41 25 32 30 54 4c 53 25 32 30 43 41 25 32 30 30 32 2e 63 72 74 30 22 06 08 2b 06 01 05 05 07 30 01 86 16 68 74 74 70 3a 2f 2f 6f 63 73 70 2e 6d 73 6f 63 73 70 2e 63 6f 6d 30 1d 06 03 55 1d 0e 04 16 04 14 a9 54 48 21 a7 6e cd 8c 0e ca 9c 2c 46 ca 9c 23 32 2e b8 84 30 0b 06 03 55 1d 0f 04 04 03 02 04 b0 30 41 06 03 55 1d 11 04 3a 30 38 82 1b 2a 2e 76 6f 72 74 65 78 2e 64 61 74 61 2e 6d 69 63 72 6f 73 6f 66 74 2e 63 6f 6d 82 19 76 6f 72 74 65 78 2e 64 61 74 61 2e 6d 69 63 72 6f 73 6f 66 74 2e 63 6f 6d 30 81 b0 06 03 55 1d 1f 04 81 a8 30 81 a5 30 81 a2 a0 81 9f a0 81 9c 86 4d 68 74 74 70 3a 2f 2f 6d 73 63 72 6c 2e 6d 69 63 72 6f 73 6f 66 74 2e 63 6f 6d 2f 70 6b 69 2f 6d 73 63 6f 72 70 2f 63 72 6c 2f 4d 69 63 72 6f 73 6f 66 74 25 32 30 52 53 41 25 32 30 54 4c 53 25 32 30 43 41 25 32 30 30 32 2e 63 72 6c 86 4b 68 74 74 70 3a 2f 2f 63 72 6c 2e 6d 69 63 72 6f 73 6f 66 74 2e 63 6f 6d 2f 70 6b 69 2f 6d 73 63 6f 72 70 2f 63 72 6c 2f 4d 69 63 72 6f 73 6f 66 74 25 32 30 52 53 41 25 32 30 54 4c 53 25 32 30 43 41 25 32 30 30 32 2e 63 72 6c 30 57 06 03 55 1d 20 04 50 30 4e 30 42 06 09 2b 06 01 04 01 82 37 2a 01 30 35 30 33 06 08 2b 06 01 05 05 07 02 01 16 27 68 74 74 70 3a 2f 2f 77 
+
+ANALYSE ETHERNET : 
+
+	Destination host address : 1c:1b:b5:b3:26:21
+	Source host address : 30:7c:b2:59:e4:29
+
+ANALYSE IPv4
+
+	Version : IPv4
+	Header length : 20 bytes
+	Type of service : 0
+	Total length : 1500 bytes
+	Identification : 14586
+	Fragment offset field : 64
+	Time to live : 110
+	Type of following protocol : 6
+	Destination address:192.168.1.34
+	Source address: 40.77.226.250
+
+ANALYSE TCP
+
+	Source port : 443
+	Destination port : 46618
+	Sequence number : 0x731fc03d
+	Acknowledgement number : 0x50f10574
+	Data offset : 8
+	 => total size : 32 bytes
+	Flags : 0x10
+		ACK: ACK num seq
+	Window : 1029
+	Checksum : 0x9545
+	Urgent pointer : 0
+
+----------------------------------------------------------
+
+TRAME 6
+30 7c b2 59 e4 29 1c 1b b5 b3 26 21 08 00 45 00 00 34 89 f2 40 00 40 06 e3 bf c0 a8 01 22 28 4d e2 fa b6 1a 01 bb 50 f1 05 74 73 1f c5 e5 80 10 01 ed a6 15 00 00 01 01 08 0a fd fe 66 d9 1b e4 39 ac 
+
+ANALYSE ETHERNET : 
+
+	Destination host address : 30:7c:b2:59:e4:29
+	Source host address : 1c:1b:b5:b3:26:21
+
+ANALYSE IPv4
+
+	Version : IPv4
+	Header length : 20 bytes
+	Type of service : 0
+	Total length : 52 bytes
+	Identification : 35314
+	Fragment offset field : 64
+	Time to live : 64
+	Type of following protocol : 6
+	Destination address:40.77.226.250
+	Source address: 192.168.1.34
+
+ANALYSE TCP
+
+	Source port : 46618
+	Destination port : 443
+	Sequence number : 0x50f10574
+	Acknowledgement number : 0x731fc5e5
+	Data offset : 8
+	 => total size : 32 bytes
+	Flags : 0x10
+		ACK: ACK num seq
+	Window : 493
+	Checksum : 0xa615
+	Urgent pointer : 0
+
+----------------------------------------------------------
+
+TRAME 7
+1c 1b b5 b3 26 21 30 7c b2 59 e4 29 08 00 45 00 05 dc 38 fb 40 00 6e 06 01 0f 28 4d e2 fa c0 a8 01 22 01 bb b6 1a 73 1f c5 e5 50 f1 05 74 80 10 04 05 2b 0f 00 00 01 01 08 0a 1b e4 39 ac fd fe 66 b8 77 77 2e 6d 69 63 72 6f 73 6f 66 74 2e 63 6f 6d 2f 70 6b 69 2f 6d 73 63 6f 72 70 2f 63 70 73 30 08 06 06 67 81 0c 01 02 01 30 1f 06 03 55 1d 23 04 18 30 16 80 14 ff 2f 7f e1 06 f4 38 f3 2d ed 25 8d 98 c2 fe 0e f6 6c fc fa 30 1d 06 03 55 1d 25 04 16 30 14 06 08 2b 06 01 05 05 07 03 01 06 08 2b 06 01 05 05 07 03 02 30 0d 06 09 2a 86 48 86 f7 0d 01 01 0b 05 00 03 82 02 01 00 5d 19 ab ef 2e 2e ba 8b 78 b2 8b 12 11 d0 fc 71 77 5c 8f 9f f5 c5 88 f5 3c 48 9c 2c 3c 98 69 1d d4 e2 0d f8 5b 6d de 52 1c af c4 e6 a0 7a 70 c3 87 f8 3c bd b0 0b 78 dc 2d 22 bb 5b c9 b6 77 e6 d4 91 16 83 6e 2b b0 e3 41 35 ff 75 80 90 22 a3 77 3a e9 a1 84 e1 e6 62 b4 7b e5 65 75 ce 0a b0 14 16 15 10 cb 22 7a 10 37 bb 3a af 3e 78 e4 58 c6 5f e5 65 65 12 e2 c1 31 13 49 d8 ba 0e c4 fe 7e af 24 5c c3 75 61 79 3d ec 96 25 4b e1 55 5c 9f 56 60 bc 3e 05 87 cc 9a 72 11 47 0d 54 9a ec ce 22 5c 9d 26 60 1d 3b 42 07 a3 3b 54 aa c6 c8 37 b7 a9 5e ce a9 ca fd df c3 e4 24 10 10 9b 22 f6 96 d9 bc fc e1 b0 43 8e ab 53 6f 0e f2 ed a8 c5 80 b5 33 ea 45 df 9e 08 9a f3 bc b3 1a 8e bd 3f 85 d0 23 0e ae 92 9a 50 8a 4a 10 5c bf 3c b0 88 1f 3d d0 02 86 d5 e8 2b c2 31 39 7b 92 86 f3 82 c5 b8 0b 16 c2 dd be b6 fd 9e e2 44 d5 f1 e6 15 86 f4 b6 de 7a 5b f6 d6 4f 3c 0d 99 51 95 29 28 55 76 ea 2a 82 32 00 b4 43 dd 6f d6 f9 89 68 42 a9 0b df 02 e1 8b 79 23 c7 09 1f 3f 9d ab 4e 03 98 59 80 61 93 dc c2 cf e9 4d 6e da 86 10 41 8c da 66 41 f2 44 fb a7 d3 b8 ca 05 bf f0 90 f1 a9 6a 05 1c a3 3e 70 44 51 ee 2a b6 6b 4b f9 0c e1 8b 6f 09 51 55 eb 46 7b 5e 10 87 d4 d6 c8 ac 25 ce 8d f0 c6 11 5a e1 17 e3 60 79 f2 2c 82 23 6e c2 06 fe de a0 86 eb f3 77 ef 49 53 d2 5c 90 9b 1a 90 85 14 71 5b bd d2 1c 94 b8 d3 88 2d 7a 5c 59 21 4b 19 38 8c 25 98 91 af 2b 04 67 94 fb 16 9a 8e 04 bf 80 0b e8 1f 77 0d 83 a9 cc 4f 74 7c 0c 49 a7 a1 1d 7a a4 cc c4 b8 6d a2 63 19 ee 07 46 2c 6c ca 7b c5 41 52 68 6f b9 dd 7e f2 0f 29 a0 e3 07 23 4a ac 99 b4 40 d3 7b cd 11 b6 a1 00 05 5e 30 82 05 5a 30 82 04 42 a0 03 02 01 02 02 10 0f a7 47 22 c5 3d 88 c8 0f 58 9e fb 1f 9d 4a 3a 30 0d 06 09 2a 86 48 86 f7 0d 01 01 0b 05 00 30 5a 31 0b 30 09 06 03 55 04 06 13 02 49 45 31 12 30 10 06 03 55 04 0a 13 09 42 61 6c 74 69 6d 6f 72 65 31 13 30 11 06 03 55 04 0b 13 0a 43 79 62 65 72 54 72 75 73 74 31 22 30 20 06 03 55 04 03 13 19 42 61 6c 74 69 6d 6f 72 65 20 43 79 62 65 72 54 72 75 73 74 20 52 6f 6f 74 30 1e 17 0d 32 30 30 37 32 31 32 33 30 30 30 30 5a 17 0d 32 34 31 30 30 38 30 37 30 30 30 30 5a 30 4f 31 0b 30 09 06 03 55 04 06 13 02 55 53 31 1e 30 1c 06 03 55 04 0a 13 15 4d 69 63 72 6f 73 6f 66 74 20 43 6f 72 70 6f 72 61 74 69 6f 6e 31 20 30 1e 06 03 55 04 03 13 17 4d 69 63 72 6f 73 6f 66 74 20 52 53 41 20 54 4c 53 20 43 41 20 30 32 30 82 02 22 30 0d 06 09 2a 86 48 86 f7 0d 01 01 01 05 00 03 82 02 0f 00 30 82 02 0a 02 82 02 01 00 f4 c0 19 59 aa 2a 24 7c 06 21 31 d1 ee 12 f5 81 6a 94 e3 f6 d1 4a 2f e3 5d b1 2e 29 14 38 bc cc 95 5d 29 07 d1 f8 5d 37 f4 20 d7 b4 3f 58 3a 7a 92 ee 8f 3c fa 2b 0a 72 03 9e 40 d4 eb 8b 8e f6 98 f9 e7 f0 dd ef 3c 25 f4 6c 33 84 56 4f a7 91 93 48 04 0d f3 02 9b c6 1a 0f f8 d1 38 6f ef c9 00 97 18 9b 32 2a 6c 29 a8 5d 6e ea 07 07 23 81 e1 99 58 a2 d7 01 85 ff ce 6d 47 fa e6 40 91 7d 73 11 42 a3 8a 5a 46 4b 92 29 4f 3e 7d f3 91 83 39 18 7c 5e 23 83 0d 67 54 a8 28 11 28 1d ad 84 fe e0 f0 05 05 71 69 d6 38 49 16 56 17 13 1d ec 04 72 23 80 b3 d6 29 38 37 66 7a 00 b0 f7 31 f8 c0 80 41 03 c2 89 27 cb 0f 53 1a fa f8 3e e6 c0 65 da 94 e7 5d 73 34 b0 68 6a f6 ab d8 e0 15 4e 5d 13 75 d8 fe 44 08 5b 9d 7d 7f cf 2a 6a 93 e8 9f bf e7 77 0a 08 83 6b c3 1b be 8d 6e d9 0f 27 b9 40 6b 29 55 26 47 a1 23 91 5f dd 0e b2 2c 51 a5 3a e3 7b ff 5a 9f ee 13 bc 4b 0d d8 42 e6 ba 65 2b db 22 36 56 28 84 c4 cc 28 b0 24 8f 15 5e 58 15 9b 42 3e d1 12 27 24 21 2a 5c fb 2a 30 8b 7c 94 ac ee 65 0a 03 40 2a b0 8d 63 0f b0 01 f0 2f 84 59 0e 7a a3 e6 ea 43 f8 d4 81 d5 5d 5b 46 34 2f d4 a2 07 1d 88 a5 22 47 f3 79 f4 87 d8 07 ea 36 bf 9e 06 31 6f ae 6d 20 b7 06 88 4b 15 b8 68 fe 86 59 e5 7c ae 94 86 4a ef 9a 70 4c 79 9a b8 22 1e 13 97 25 53 d8 af a4 bc 0f 4f 1f 5b d1 59 e8 f7 e0 29 12 5a c5 81 d6 34 fd 82 99 e3 a1 9f 8c e0 bd b5 ae 06 db 95 49 d5 62 ac 32 65 8b b7 3c ab 7e 0c 1b 62 8a 6a b9 97 7b db 87 c5 76 9b ec c5 f2 2f 30 6e 66 dd 51 64 4e 13 aa ce c3 ad b4 37 14 7f 23 13 a8 cd a9 6a 7e 2d c4 6e 7c bb 13 49 d0 c8 d1 d3 75 02 11 42 d1 53 ea 8c 9f 02 03 01 00 01 a3 82 01 25 30 82 01 
+
+ANALYSE ETHERNET : 
+
+	Destination host address : 1c:1b:b5:b3:26:21
+	Source host address : 30:7c:b2:59:e4:29
+
+ANALYSE IPv4
+
+	Version : IPv4
+	Header length : 20 bytes
+	Type of service : 0
+	Total length : 1500 bytes
+	Identification : 14587
+	Fragment offset field : 64
+	Time to live : 110
+	Type of following protocol : 6
+	Destination address:192.168.1.34
+	Source address: 40.77.226.250
+
+ANALYSE TCP
+
+	Source port : 443
+	Destination port : 46618
+	Sequence number : 0x731fc5e5
+	Acknowledgement number : 0x50f10574
+	Data offset : 8
+	 => total size : 32 bytes
+	Flags : 0x10
+		ACK: ACK num seq
+	Window : 1029
+	Checksum : 0x2b0f
+	Urgent pointer : 0
+
+----------------------------------------------------------
+
+TRAME 8
+30 7c b2 59 e4 29 1c 1b b5 b3 26 21 08 00 45 00 00 34 89 f3 40 00 40 06 e3 be c0 a8 01 22 28 4d e2 fa b6 1a 01 bb 50 f1 05 74 73 1f cb 8d 80 10 01 ed a0 6b 00 00 01 01 08 0a fd fe 66 db 1b e4 39 ac 
+
+ANALYSE ETHERNET : 
+
+	Destination host address : 30:7c:b2:59:e4:29
+	Source host address : 1c:1b:b5:b3:26:21
+
+ANALYSE IPv4
+
+	Version : IPv4
+	Header length : 20 bytes
+	Type of service : 0
+	Total length : 52 bytes
+	Identification : 35315
+	Fragment offset field : 64
+	Time to live : 64
+	Type of following protocol : 6
+	Destination address:40.77.226.250
+	Source address: 192.168.1.34
+
+ANALYSE TCP
+
+	Source port : 46618
+	Destination port : 443
+	Sequence number : 0x50f10574
+	Acknowledgement number : 0x731fcb8d
+	Data offset : 8
+	 => total size : 32 bytes
+	Flags : 0x10
+		ACK: ACK num seq
+	Window : 493
+	Checksum : 0xa06b
+	Urgent pointer : 0
+
+----------------------------------------------------------
+
+TRAME 9
+1c 1b b5 b3 26 21 30 7c b2 59 e4 29 08 00 45 00 03 9a 38 fc 40 00 6e 06 03 50 28 4d e2 fa c0 a8 01 22 01 bb b6 1a 73 1f cb 8d 50 f1 05 74 80 18 04 05 48 22 00 00 01 01 08 0a 1b e4 39 ac fd fe 66 b8 21 30 1d 06 03 55 1d 0e 04 16 04 14 ff 2f 7f e1 06 f4 38 f3 2d ed 25 8d 98 c2 fe 0e f6 6c fc fa 30 1f 06 03 55 1d 23 04 18 30 16 80 14 e5 9d 59 30 82 47 58 cc ac fa 08 54 36 86 7b 3a b5 04 4d f0 30 0e 06 03 55 1d 0f 01 01 ff 04 04 03 02 01 86 30 1d 06 03 55 1d 25 04 16 30 14 06 08 2b 06 01 05 05 07 03 01 06 08 2b 06 01 05 05 07 03 02 30 12 06 03 55 1d 13 01 01 ff 04 08 30 06 01 01 ff 02 01 00 30 34 06 08 2b 06 01 05 05 07 01 01 04 28 30 26 30 24 06 08 2b 06 01 05 05 07 30 01 86 18 68 74 74 70 3a 2f 2f 6f 63 73 70 2e 64 69 67 69 63 65 72 74 2e 63 6f 6d 30 3a 06 03 55 1d 1f 04 33 30 31 30 2f a0 2d a0 2b 86 29 68 74 74 70 3a 2f 2f 63 72 6c 33 2e 64 69 67 69 63 65 72 74 2e 63 6f 6d 2f 4f 6d 6e 69 72 6f 6f 74 32 30 32 35 2e 63 72 6c 30 2a 06 03 55 1d 20 04 23 30 21 30 08 06 06 67 81 0c 01 02 01 30 08 06 06 67 81 0c 01 02 02 30 0b 06 09 2b 06 01 04 01 82 37 2a 01 30 0d 06 09 2a 86 48 86 f7 0d 01 01 0b 05 00 03 82 01 01 00 a0 d9 dd 7a e5 d4 35 b4 74 b4 20 df 37 b8 e8 b8 4b 98 5e 2e 1b 31 fb 35 c8 3b 0b 71 9e fc 02 59 d3 89 df 01 4b 41 a1 43 72 06 8c b4 de fd 52 33 08 15 52 14 79 d0 d9 06 cb da 94 a9 f1 fb a9 76 b4 cf d5 1f 86 00 c8 d3 f1 fa ed 4b 15 1d 23 a0 f6 29 41 82 db 35 89 1e 76 43 6e 85 19 84 05 eb 0f aa 3e 1a 0f 3e bc 64 32 3a 7c 9f 76 b2 3d aa d7 c4 2f 25 42 79 43 3e f6 f0 0b ed 14 e6 ad f8 08 e0 2b 43 c5 a8 f6 04 02 f8 94 2a bd 7a d8 d0 75 5d 92 71 7f ab b2 22 35 25 9c 6e 14 11 d1 df 52 a7 61 97 44 7c e2 63 2d ad 82 0d 92 c4 f3 43 6b 07 60 cf 1f 12 1a 88 0a d4 e5 71 12 eb fc 51 2b 51 a3 d4 7b de b8 f2 7c e2 4a 70 34 a8 a1 fb ad 46 6a 3f f2 1f 99 ba 3e 58 d6 52 64 6d 41 6e 03 a1 96 4f b9 db 55 be 35 c8 a1 dc 74 5b bd 10 44 d0 b5 98 4f cb d6 2a 77 e3 81 92 b1 c0 7c 09 0c 00 01 28 03 00 1d 20 54 16 41 6a ad ee cc 31 af 93 1c 19 3e fe df 73 53 f2 43 1e 2a 5f 3c 08 f0 e5 2a da b7 e1 15 55 04 01 01 00 ba 6c 9d 24 d5 8a db 58 6e 90 b2 94 db a7 77 52 94 c9 8a df 05 b5 26 3b c6 09 24 38 ab c3 2f ad 9e f5 8a ba d1 8e 7c b4 a9 29 94 a9 52 27 6b f8 9b 4e cc cc b0 53 82 a3 53 6c 95 6b ec 7b 2b db 48 b2 97 2c c0 db 99 67 e1 47 7d 67 62 8d 47 6e 3c dc 38 4f ff 61 1b 80 be b8 b8 0a d1 52 44 63 00 b1 70 44 1c 18 09 1f 94 84 88 2c 4a 48 c7 21 9b 37 48 c6 26 fe b5 70 42 66 a6 6c 22 80 dd 9e 00 d4 32 b1 15 ea 87 d1 8c 21 01 35 4a 7e 05 91 f4 d7 af 70 cb 2e 96 89 7b 6e fe bd eb a6 09 5d 39 54 93 6b e2 9b fe fa 38 b8 20 5c 5d 1a 29 f5 ee 83 d5 bb 0b 13 23 24 98 74 d0 79 da 70 bb 4e da b0 21 53 78 e6 a2 a1 3c 79 22 e8 a0 58 52 c8 88 b7 70 ea e2 f2 20 51 bc d5 ed bb b9 d1 c9 9b 05 ff 20 86 e8 77 75 98 03 eb db be a5 a9 95 55 f4 1e e5 30 72 2b 4f 61 0a 7c 07 bc ac 41 b4 27 0e 00 00 00 
+
+ANALYSE ETHERNET : 
+
+	Destination host address : 1c:1b:b5:b3:26:21
+	Source host address : 30:7c:b2:59:e4:29
+
+ANALYSE IPv4
+
+	Version : IPv4
+	Header length : 20 bytes
+	Type of service : 0
+	Total length : 922 bytes
+	Identification : 14588
+	Fragment offset field : 64
+	Time to live : 110
+	Type of following protocol : 6
+	Destination address:192.168.1.34
+	Source address: 40.77.226.250
+
+ANALYSE TCP
+
+	Source port : 443
+	Destination port : 46618
+	Sequence number : 0x731fcb8d
+	Acknowledgement number : 0x50f10574
+	Data offset : 8
+	 => total size : 32 bytes
+	Flags : 0x18
+		PUSH: receiver must push data to app and doesnt wait the tampon filling
+		ACK: ACK num seq
+	Window : 1029
+	Checksum : 0x4822
+	Urgent pointer : 0
+
+----------------------------------------------------------
+
+TRAME 10
+30 7c b2 59 e4 29 1c 1b b5 b3 26 21 08 00 45 00 00 34 89 f4 40 00 40 06 e3 bd c0 a8 01 22 28 4d e2 fa b6 1a 01 bb 50 f1 05 74 73 1f ce f3 80 10 01 ed 9d 05 00 00 01 01 08 0a fd fe 66 db 1b e4 39 ac 
+
+ANALYSE ETHERNET : 
+
+	Destination host address : 30:7c:b2:59:e4:29
+	Source host address : 1c:1b:b5:b3:26:21
+
+ANALYSE IPv4
+
+	Version : IPv4
+	Header length : 20 bytes
+	Type of service : 0
+	Total length : 52 bytes
+	Identification : 35316
+	Fragment offset field : 64
+	Time to live : 64
+	Type of following protocol : 6
+	Destination address:40.77.226.250
+	Source address: 192.168.1.34
+
+ANALYSE TCP
+
+	Source port : 46618
+	Destination port : 443
+	Sequence number : 0x50f10574
+	Acknowledgement number : 0x731fcef3
+	Data offset : 8
+	 => total size : 32 bytes
+	Flags : 0x10
+		ACK: ACK num seq
+	Window : 493
+	Checksum : 0x9d05
+	Urgent pointer : 0
+
+----------------------------------------------------------
+
+TRAME 11
+30 7c b2 59 e4 29 1c 1b b5 b3 26 21 08 00 45 00 00 91 89 f5 40 00 40 06 e3 5f c0 a8 01 22 28 4d e2 fa b6 1a 01 bb 50 f1 05 74 73 1f ce f3 80 18 01 f5 25 46 00 00 01 01 08 0a fd fe 66 dd 1b e4 39 ac 16 03 03 00 25 10 00 00 21 20 df a4 33 b4 fb a6 cf 33 3f c4 60 a7 63 1a 9b a7 d1 0e 59 4f 27 79 99 f6 69 09 a9 11 76 81 3a 6f 14 03 03 00 01 01 16 03 03 00 28 00 00 00 00 00 00 00 00 29 ed 89 6d 4d 52 73 74 a2 56 50 e2 3f 2f ae 85 07 ca d6 1e 79 98 31 d9 f9 ff cd 92 e8 04 4c 91 
+
+ANALYSE ETHERNET : 
+
+	Destination host address : 30:7c:b2:59:e4:29
+	Source host address : 1c:1b:b5:b3:26:21
+
+ANALYSE IPv4
+
+	Version : IPv4
+	Header length : 20 bytes
+	Type of service : 0
+	Total length : 145 bytes
+	Identification : 35317
+	Fragment offset field : 64
+	Time to live : 64
+	Type of following protocol : 6
+	Destination address:40.77.226.250
+	Source address: 192.168.1.34
+
+ANALYSE TCP
+
+	Source port : 46618
+	Destination port : 443
+	Sequence number : 0x50f10574
+	Acknowledgement number : 0x731fcef3
 	Data offset : 8
 	 => total size : 32 bytes
 	Flags : 0x18
 		PUSH: receiver must push data to app and doesnt wait the tampon filling
 		ACK: ACK num seq
 	Window : 501
-	Checksum : 0x6e93
+	Checksum : 0x2546
 	Urgent pointer : 0
 
 ----------------------------------------------------------
 
-TRAME 2
-1c 1b b5 b3 26 21 30 7c b2 59 e4 2a 86 dd 60 00 00 00 00 3e 06 36 2a 03 28 80 f0 1c 80 0e fa ce b0 0c 00 00 00 02 2a 01 cb 10 05 a2 e1 00 5d bb b1 a5 f8 7a f3 37 01 bb d5 38 57 60 6d a4 26 12 24 08 80 18 02 73 75 d6 00 00 01 01 08 0a 13 87 f6 bd ec 2b 75 cb 17 03 03 00 19 73 8f 5e 1d e4 bc 10 38 1a 9e c7 31 20 96 75 c9 37 34 9e f0 b0 2c cc 11 16 
+TRAME 12
+1c 1b b5 b3 26 21 30 7c b2 59 e4 2a 08 00 45 00 00 67 38 fd 40 00 6e 06 06 82 28 4d e2 fa c0 a8 01 22 01 bb b6 1a 73 1f ce f3 50 f1 05 d1 80 18 04 05 88 a4 00 00 01 01 08 0a 1b e4 39 ce fd fe 66 dd 14 03 03 00 01 01 16 03 03 00 28 00 00 00 00 00 00 00 00 e7 d2 3f 8d 4d b1 0a 8b 3e 9b 66 e6 1d c1 5b c9 73 0e 83 1f b1 1e cd a1 15 57 d5 88 71 a3 15 9e 
 
 ANALYSE ETHERNET : 
 
 	Destination host address : 1c:1b:b5:b3:26:21
 	Source host address : 30:7c:b2:59:e4:2a
 
-ANALYSE ipv6
-	Version : 96
-	Next header : 0x6
-	Payload length : 62
-	Hop limit : 54
-	Flow ID : 1610612736
-	Destination adress : cccv 2a01:cb10:5a2:e100:5dbb:b1a5:f87a:f337
-	Source adress : cccv 2a03:2880:f01c:800e:face:b00c:0:2
+ANALYSE IPv4
+
+	Version : IPv4
+	Header length : 20 bytes
+	Type of service : 0
+	Total length : 103 bytes
+	Identification : 14589
+	Fragment offset field : 64
+	Time to live : 110
+	Type of following protocol : 6
+	Destination address:192.168.1.34
+	Source address: 40.77.226.250
 
 ANALYSE TCP
 
 	Source port : 443
-	Destination port : 54584
-	Sequence number : 0x57606da4
-	Acknowledgement number : 0x26122408
+	Destination port : 46618
+	Sequence number : 0x731fcef3
+	Acknowledgement number : 0x50f105d1
 	Data offset : 8
 	 => total size : 32 bytes
 	Flags : 0x18
 		PUSH: receiver must push data to app and doesnt wait the tampon filling
 		ACK: ACK num seq
-	Window : 627
-	Checksum : 0x75d6
+	Window : 1029
+	Checksum : 0x88a4
 	Urgent pointer : 0
 
 ----------------------------------------------------------
 
-TRAME 3
-30 7c b2 59 e4 29 1c 1b b5 b3 26 21 86 dd 60 04 3f a9 00 20 06 40 2a 01 cb 10 05 a2 e1 00 5d bb b1 a5 f8 7a f3 37 2a 03 28 80 f0 1c 80 0e fa ce b0 0c 00 00 00 02 d5 38 01 bb 26 12 24 08 57 60 6d c2 80 10 01 f5 dd f0 00 00 01 01 08 0a ec 2b 75 e1 13 87 f6 bd 
+TRAME 13
+30 7c b2 59 e4 29 1c 1b b5 b3 26 21 08 00 45 00 00 34 89 f6 40 00 40 06 e3 bb c0 a8 01 22 28 4d e2 fa b6 1a 01 bb 50 f1 05 d1 73 1f cf 26 80 10 01 f5 9c 2d 00 00 01 01 08 0a fd fe 66 f9 1b e4 39 ce 
 
 ANALYSE ETHERNET : 
 
 	Destination host address : 30:7c:b2:59:e4:29
 	Source host address : 1c:1b:b5:b3:26:21
 
-ANALYSE ipv6
-	Version : 96
-	Next header : 0x6
-	Payload length : 32
-	Hop limit : 64
-	Flow ID : 1610891177
-	Destination adress : cccv 2a03:2880:f01c:800e:face:b00c:0:2
-	Source adress : cccv 2a01:cb10:5a2:e100:5dbb:b1a5:f87a:f337
+ANALYSE IPv4
+
+	Version : IPv4
+	Header length : 20 bytes
+	Type of service : 0
+	Total length : 52 bytes
+	Identification : 35318
+	Fragment offset field : 64
+	Time to live : 64
+	Type of following protocol : 6
+	Destination address:40.77.226.250
+	Source address: 192.168.1.34
 
 ANALYSE TCP
 
-	Source port : 54584
+	Source port : 46618
 	Destination port : 443
-	Sequence number : 0x26122408
-	Acknowledgement number : 0x57606dc2
+	Sequence number : 0x50f105d1
+	Acknowledgement number : 0x731fcf26
 	Data offset : 8
 	 => total size : 32 bytes
 	Flags : 0x10
 		ACK: ACK num seq
 	Window : 501
-	Checksum : 0xddf0
+	Checksum : 0x9c2d
 	Urgent pointer : 0
 
 ----------------------------------------------------------
 
-TRAME 4
-ff ff ff ff ff ff 30 7c b2 59 e4 29 08 06 00 01 08 00 06 04 00 01 30 7c b2 59 e4 29 c0 a8 01 01 00 00 00 00 00 00 c0 a8 01 16 
+TRAME 14
+30 7c b2 59 e4 29 1c 1b b5 b3 26 21 08 00 45 00 04 d3 89 f7 40 00 40 06 df 1b c0 a8 01 22 28 4d e2 fa b6 1a 01 bb 50 f1 05 d1 73 1f cf 26 80 18 01 f5 4f 4d 00 00 01 01 08 0a fd fe 66 fb 1b e4 39 ce 17 03 03 04 9a 00 00 00 00 00 00 00 01 69 04 68 8b a0 a3 5c cd 9d 84 29 7a e6 c1 ad 2c 77 a9 bb ee 9f dc 59 87 e3 99 12 fb 6d 1c bc f2 a7 08 24 f9 6f e5 6c 5a 33 ae 0e c5 c5 eb 19 2f 2b 1e 18 50 20 0f b7 89 ec d6 c4 bd a0 6d 47 2c 03 de be 6d 7b 29 b5 5f ed 94 bb d8 94 5b 72 3a 07 8e 0b 56 25 0d 1b 75 ff eb 09 e2 52 0f ae 44 6c 78 02 89 e9 43 82 cf a9 c0 5c 00 e0 ea 42 4d 8b 64 79 57 a2 b2 67 18 04 75 89 5d fa 48 1e 97 2f 66 71 75 f2 99 f6 4f fb e6 b3 7b fc a2 b4 cd ec 0b e4 d7 45 f9 89 a8 98 31 a3 ba 27 36 86 59 4a 17 ca 8f cc 1b 6a fa b6 54 8d e8 4c a8 65 0a 6f 0c d0 49 1a 9e 73 50 2d 0d c3 03 18 76 7a ff 28 21 49 6e 26 e4 4e 41 4d 42 76 8d f8 ac 2d e0 52 63 e2 42 fe 01 75 5d e5 ad 78 3b 6a 5f f0 dc 62 77 13 a7 41 00 1e ec 18 e4 a6 4d 2d b7 00 a6 f6 96 ba 4a 0d f7 84 76 13 41 14 e2 ec 13 af 2a 80 5b ea 4d 8e d9 76 76 0c 43 71 57 df 25 27 44 ea ad 00 77 d9 ba a2 b9 86 0f 0d f3 71 53 13 a8 be 81 1e f7 36 0f bf cc e8 81 70 aa ea 6b 45 b1 08 9e f6 ac 4c 79 53 d1 f6 90 d9 ed 5c 79 0e 5c 6e 5d 63 18 53 a8 52 c1 a3 97 eb 91 5c c6 f5 27 7d 8a 2b 4f 71 15 62 68 09 ff 5d 29 c0 c8 ed 8c 0b f3 bf e3 7a d9 43 c9 63 7f e3 ba cd 93 87 69 ce 3a e5 1e ad ae ba 59 06 a9 90 f7 d2 e3 92 ee 3e ad fd b3 26 85 82 5f 99 fd 74 59 84 a3 cd 1a 73 49 aa 11 49 92 d7 3c 93 67 f0 c6 48 56 d0 f5 94 dc 8d df 8c 81 22 a2 76 38 54 83 9b e1 bf 38 63 7b 1d 19 85 5d f6 37 e1 e3 0e d9 8a 4d 77 f1 d6 da 4e d8 06 ae 6e 40 32 de 14 b6 65 89 4c 11 5c f0 58 c0 96 eb 5b c8 4d c1 c6 be ec bf 38 32 b6 a1 98 73 3f 79 20 71 a5 31 97 84 8b e6 bb 3f 96 6b 57 01 68 10 cb f5 c1 2e 63 69 f3 42 9f 26 e7 ed 67 65 50 05 98 e3 4e 69 6f a4 a2 42 47 01 22 58 ff 7a 28 5b 72 d6 9d 10 b2 78 25 39 37 bf 9d 20 65 8f de f6 c1 7a 5e 7d ea 55 6d ca 06 9d 4b 74 05 9c 52 e2 3a 8d 10 c3 84 17 47 16 c2 81 06 51 80 61 5e ec 50 96 83 92 41 a0 cf 7a 88 39 6a 0f 6b 04 bd 32 8a 1a 9e 62 ea 10 09 dc f4 70 f3 d6 7e 9b a5 28 c3 c1 24 0f 36 2f 27 cd a9 4f 0a 6d 0b 5d 02 9b 5c 21 7a 8f 74 bc 74 48 0d 72 9b d2 03 d2 2d 41 9a f7 92 0b 68 98 07 78 13 64 3f 8d 63 b3 26 99 e7 b8 cb c6 bf 33 fa e2 26 88 bf 1c 4c 78 9b ac 6f 4f 6d 7e 93 8b 7f 50 43 e8 e6 0a 9b a7 43 ad b8 53 7b 3c 5e 2b ca 21 88 9f 3f cd 7d ec 7f 93 06 43 17 1a bd dd a1 a9 81 c4 ff c6 ac e5 43 a3 ac 9d 54 a4 aa 0d b1 87 6c 83 ef 31 e8 01 8d cf 60 b9 e7 2f 35 a3 af 8a fd a3 a1 bd f9 ea e3 54 ed b4 ed 47 93 e6 c2 61 6e 13 69 d8 e2 32 4b 93 14 00 6c b5 f7 f4 76 a0 ca 05 bd 95 b3 cf 02 59 d4 12 f1 9c da 35 32 10 1a c4 e0 35 95 5b e6 f6 da ec fa b5 c0 fa 8b 2b 8d 69 bf 01 37 61 cc 4a 32 9c ec c3 96 23 68 d1 a2 29 dd 71 11 86 47 42 35 62 7e 8a b1 8e 1e 6f 2d bd fb 6b 16 e8 b9 74 fb 69 92 01 c6 61 b1 04 b6 d6 ec c8 b1 fe fa 70 70 52 fa f6 83 9a 6b 13 dc 6d 47 4d f6 df 3d b8 ff 91 0a 20 7d 05 18 76 d2 0a ad 71 c3 29 67 82 02 85 1c 29 34 d1 9f 52 d7 9c ba c7 88 5b ba ae d9 08 64 1d bb fb cb 7c 19 9e 8e f3 d8 95 56 6d 0b a4 a0 d8 e9 c3 88 5c 57 6a ed 24 6a 9b a9 8d 41 0f 8f 4f 36 59 90 78 31 06 db 36 93 cf 4f aa a4 ac fe b4 c9 98 91 88 00 5e 92 95 47 a4 fd 20 95 f8 e3 0d e6 c8 f5 f0 70 d8 bf 9e fc 01 b2 35 88 81 ff 06 ad 75 32 0d 3b 1d 38 bc 61 c5 56 18 98 74 7e 29 b9 7a 11 1a 9c b2 3d e6 11 66 78 cc 19 ee 4a 97 ea 1f c2 89 16 47 20 36 9e 36 d6 29 b0 5a b5 a3 39 db 22 09 fa dd 9e 7b fb 65 4b 21 ac 40 63 cd ce bc 32 0b 9b 88 9e fb bb a2 f9 ae a9 58 25 c5 fd 82 22 ab 95 ff c7 90 65 6a 9d 42 f6 2e 98 d3 dc 56 23 70 45 0a 9b b3 58 da c4 2d ff 81 85 4f d0 2e 61 7d e8 8a b4 0c 9f 58 7d bf 31 fe 31 ff c0 a1 07 ca 6d 44 30 8d 5b 73 71 8f b7 ef 0e 28 07 8d 4a b1 51 c3 37 ff f2 f7 93 2c a8 69 1e ad e6 79 20 d8 d6 d0 76 c3 
 
 ANALYSE ETHERNET : 
 
-	Destination host address : ff:ff:ff:ff:ff:ff
-	Source host address : 30:7c:b2:59:e4:29
-Type pas encore étudié
+	Destination host address : 30:7c:b2:59:e4:29
+	Source host address : 1c:1b:b5:b3:26:21
+
+ANALYSE IPv4
+
+	Version : IPv4
+	Header length : 20 bytes
+	Type of service : 0
+	Total length : 1235 bytes
+	Identification : 35319
+	Fragment offset field : 64
+	Time to live : 64
+	Type of following protocol : 6
+	Destination address:40.77.226.250
+	Source address: 192.168.1.34
+
+ANALYSE TCP
+
+	Source port : 46618
+	Destination port : 443
+	Sequence number : 0x50f105d1
+	Acknowledgement number : 0x731fcf26
+	Data offset : 8
+	 => total size : 32 bytes
+	Flags : 0x18
+		PUSH: receiver must push data to app and doesnt wait the tampon filling
+		ACK: ACK num seq
+	Window : 501
+	Checksum : 0x4f4d
+	Urgent pointer : 0
 
 ----------------------------------------------------------
 
-TRAME 5
-30 7c b2 59 e4 29 1c 1b b5 b3 26 21 86 dd 60 04 3f a9 00 40 06 40 2a 01 cb 10 05 a2 e1 00 5d bb b1 a5 f8 7a f3 37 2a 03 28 80 f0 1c 80 0e fa ce b0 0c 00 00 00 02 d5 38 01 bb 26 12 24 08 57 60 6d c2 80 18 01 f5 d4 c0 00 00 01 01 08 0a ec 2b 79 b1 13 87 f6 bd 17 03 03 00 1b da d6 6d 9a 62 90 23 fc e1 2b 80 a7 bd 2d 23 9a 97 5d f5 7e f3 70 e5 55 6d 93 50 
+TRAME 15
+1c 1b b5 b3 26 21 30 7c b2 59 e4 29 08 00 45 00 01 6e 38 fe 40 00 6e 06 05 7a 28 4d e2 fa c0 a8 01 22 01 bb b6 1a 73 1f cf 26 50 f1 0a 70 80 19 04 00 e7 ac 00 00 01 01 08 0a 1b e4 3a 18 fd fe 66 fb 17 03 03 01 35 00 00 00 00 00 00 00 01 08 30 fb e8 74 64 3c e8 77 83 36 12 6e ba 50 26 4d 81 64 f0 60 16 25 9f 80 84 6f a1 73 7c 7b b1 23 d1 9d e6 ee 4c 54 39 7d e6 e5 1d e8 5b 15 47 79 0c c5 56 b3 ad b6 51 83 2d 31 35 ec 50 e1 b8 f6 11 cb aa 28 39 ea be 09 40 83 f2 f5 c1 1d dc 1d b4 f9 2f 5e 99 d8 9b 77 f5 c3 ca d6 66 42 cf 5b 12 eb 12 4f 3f 3e c2 a9 37 e6 47 fc f7 46 56 f6 34 62 16 a3 06 7f bf c3 27 9a a9 4f 18 9b 38 ba a2 9e b3 d0 46 38 7a c5 9e 80 a0 b8 64 53 75 50 67 0c 21 a8 aa 34 82 2f 45 4e fc 52 5b f1 43 8c 1d eb 87 7a 7d 61 c9 b5 2f e9 9c e9 ec 8e 0d 89 b4 77 33 e0 3f 87 02 20 8e 0b 09 cd a2 b2 4d a2 ff 14 52 0e 39 91 8a cd d1 4c d5 e6 20 cd a1 3b d8 18 61 44 7e a4 fd 58 4d 24 36 d8 f6 8f 2e 25 7c 5f 6f e3 a3 df 04 dd 77 f1 7f fa d1 19 a1 8d 22 56 19 f2 c6 43 6a 46 c9 e3 d6 6d 6e 8f eb 79 71 44 49 22 db d1 f5 81 80 e4 fc ae e3 91 cb 68 84 6f 79 a3 b7 56 13 48 82 83 1a e8 b4 32 ed 5a 61 52 cc e2 29 7f db a1 22 22 0d 30 
+
+ANALYSE ETHERNET : 
+
+	Destination host address : 1c:1b:b5:b3:26:21
+	Source host address : 30:7c:b2:59:e4:29
+
+ANALYSE IPv4
+
+	Version : IPv4
+	Header length : 20 bytes
+	Type of service : 0
+	Total length : 366 bytes
+	Identification : 14590
+	Fragment offset field : 64
+	Time to live : 110
+	Type of following protocol : 6
+	Destination address:192.168.1.34
+	Source address: 40.77.226.250
+
+ANALYSE TCP
+
+	Source port : 443
+	Destination port : 46618
+	Sequence number : 0x731fcf26
+	Acknowledgement number : 0x50f10a70
+	Data offset : 8
+	 => total size : 32 bytes
+	Flags : 0x19
+		FIN: fin de transmission
+		PUSH: receiver must push data to app and doesnt wait the tampon filling
+		ACK: ACK num seq
+		URG: Urgent data pointer field is used
+	Window : 1024
+	Checksum : 0xe7ac
+	Urgent pointer : 0
+
+----------------------------------------------------------
+
+TRAME 16
+30 7c b2 59 e4 29 1c 1b b5 b3 26 21 08 00 45 00 00 53 89 f8 40 00 40 06 e3 9a c0 a8 01 22 28 4d e2 fa b6 1a 01 bb 50 f1 0a 70 73 1f d0 61 80 18 01 f5 18 8d 00 00 01 01 08 0a fd fe 67 4a 1b e4 3a 18 15 03 03 00 1a 00 00 00 00 00 00 00 02 79 22 32 0c 6f 3f 38 73 10 7b 0e a6 78 02 f2 27 25 1c 
+
+ANALYSE ETHERNET : 
+
+	Destination host address : 30:7c:b2:59:e4:29
+	Source host address : 1c:1b:b5:b3:26:21
+
+ANALYSE IPv4
+
+	Version : IPv4
+	Header length : 20 bytes
+	Type of service : 0
+	Total length : 83 bytes
+	Identification : 35320
+	Fragment offset field : 64
+	Time to live : 64
+	Type of following protocol : 6
+	Destination address:40.77.226.250
+	Source address: 192.168.1.34
+
+ANALYSE TCP
+
+	Source port : 46618
+	Destination port : 443
+	Sequence number : 0x50f10a70
+	Acknowledgement number : 0x731fd061
+	Data offset : 8
+	 => total size : 32 bytes
+	Flags : 0x18
+		PUSH: receiver must push data to app and doesnt wait the tampon filling
+		ACK: ACK num seq
+	Window : 501
+	Checksum : 0x188d
+	Urgent pointer : 0
+
+----------------------------------------------------------
+
+TRAME 17
+30 7c b2 59 e4 29 1c 1b b5 b3 26 21 08 00 45 00 00 34 89 f9 40 00 40 06 e3 b8 c0 a8 01 22 28 4d e2 fa b6 1a 01 bb 50 f1 0a 8f 73 1f d0 61 80 11 01 f5 95 98 00 00 01 01 08 0a fd fe 67 4a 1b e4 3a 18 
+
+ANALYSE ETHERNET : 
+
+	Destination host address : 30:7c:b2:59:e4:29
+	Source host address : 1c:1b:b5:b3:26:21
+
+ANALYSE IPv4
+
+	Version : IPv4
+	Header length : 20 bytes
+	Type of service : 0
+	Total length : 52 bytes
+	Identification : 35321
+	Fragment offset field : 64
+	Time to live : 64
+	Type of following protocol : 6
+	Destination address:40.77.226.250
+	Source address: 192.168.1.34
+
+ANALYSE TCP
+
+	Source port : 46618
+	Destination port : 443
+	Sequence number : 0x50f10a8f
+	Acknowledgement number : 0x731fd061
+	Data offset : 8
+	 => total size : 32 bytes
+	Flags : 0x11
+		FIN: fin de transmission
+		ACK: ACK num seq
+		URG: Urgent data pointer field is used
+	Window : 501
+	Checksum : 0x9598
+	Urgent pointer : 0
+
+----------------------------------------------------------
+
+TRAME 18
+1c 1b b5 b3 26 21 30 7c b2 59 e4 2a 08 00 45 00 00 34 38 ff 40 00 6e 06 06 b3 28 4d e2 fa c0 a8 01 22 01 bb b6 1a 73 1f d0 61 50 f1 0a 90 80 10 04 00 93 6a 00 00 01 01 08 0a 1b e4 3a 3b fd fe 67 4a 
+
+ANALYSE ETHERNET : 
+
+	Destination host address : 1c:1b:b5:b3:26:21
+	Source host address : 30:7c:b2:59:e4:2a
+
+ANALYSE IPv4
+
+	Version : IPv4
+	Header length : 20 bytes
+	Type of service : 0
+	Total length : 52 bytes
+	Identification : 14591
+	Fragment offset field : 64
+	Time to live : 110
+	Type of following protocol : 6
+	Destination address:192.168.1.34
+	Source address: 40.77.226.250
+
+ANALYSE TCP
+
+	Source port : 443
+	Destination port : 46618
+	Sequence number : 0x731fd061
+	Acknowledgement number : 0x50f10a90
+	Data offset : 8
+	 => total size : 32 bytes
+	Flags : 0x10
+		ACK: ACK num seq
+	Window : 1024
+	Checksum : 0x936a
+	Urgent pointer : 0
+
+----------------------------------------------------------
+
+TRAME 19
+30 7c b2 59 e4 29 1c 1b b5 b3 26 21 08 00 45 00 00 3c cc 32 40 00 40 06 25 43 c0 a8 01 22 23 e0 63 9c e3 9c 00 50 54 f5 c7 cc 00 00 00 00 a0 02 fa f0 aa fa 00 00 02 04 05 b4 04 02 08 0a a2 48 b5 d6 00 00 00 00 01 03 03 07 
+
+ANALYSE ETHERNET : 
+
+	Destination host address : 30:7c:b2:59:e4:29
+	Source host address : 1c:1b:b5:b3:26:21
+
+ANALYSE IPv4
+
+	Version : IPv4
+	Header length : 20 bytes
+	Type of service : 0
+	Total length : 60 bytes
+	Identification : 52274
+	Fragment offset field : 64
+	Time to live : 64
+	Type of following protocol : 6
+	Destination address:35.224.99.156
+	Source address: 192.168.1.34
+
+ANALYSE TCP
+
+	Source port : 58268
+	Destination port : 80
+	Sequence number : 0x54f5c7cc
+	Acknowledgement number : 0x00
+	Data offset : 10
+	 => total size : 40 bytes
+	Flags : 0x02
+		SYN: synchronisation num seq
+	Window : 64240
+	Checksum : 0xaafa
+	Urgent pointer : 0
+
+----------------------------------------------------------
+
+TRAME 20
+30 7c b2 59 e4 29 1c 1b b5 b3 26 21 86 dd 60 05 0b 7d 00 40 06 40 2a 01 cb 10 05 a2 e1 00 8d 5c 3b 8b 30 64 b2 e0 2a 03 28 80 f0 2d 00 0e fa ce b0 0c 00 00 00 02 ac 76 01 bb 90 85 5b ac 93 8d ef 85 80 18 01 f5 80 34 00 00 01 01 08 0a 1a db 3d 2a 3c 65 b7 d4 17 03 03 00 1b e0 f3 85 eb c4 cc 52 03 0f 50 6e 0c 71 13 c8 bd db f7 cf 2d dd b3 79 19 70 0f 8e 
 
 ANALYSE ETHERNET : 
 
@@ -129,29 +732,68 @@ ANALYSE ipv6
 	Next header : 0x6
 	Payload length : 64
 	Hop limit : 64
-	Flow ID : 1610891177
-	Destination adress : cccv 2a03:2880:f01c:800e:face:b00c:0:2
-	Source adress : cccv 2a01:cb10:5a2:e100:5dbb:b1a5:f87a:f337
+	Flow ID : 1610943357
+	Destination adress : cccv 2a03:2880:f02d:e:face:b00c:0:2
+	Source adress : cccv 2a01:cb10:5a2:e100:8d5c:3b8b:3064:b2e0
 
 ANALYSE TCP
 
-	Source port : 54584
+	Source port : 44150
 	Destination port : 443
-	Sequence number : 0x26122408
-	Acknowledgement number : 0x57606dc2
+	Sequence number : 0x90855bac
+	Acknowledgement number : 0x938def85
 	Data offset : 8
 	 => total size : 32 bytes
 	Flags : 0x18
 		PUSH: receiver must push data to app and doesnt wait the tampon filling
 		ACK: ACK num seq
 	Window : 501
-	Checksum : 0xd4c0
+	Checksum : 0x8034
 	Urgent pointer : 0
 
 ----------------------------------------------------------
 
-TRAME 6
-1c 1b b5 b3 26 21 30 7c b2 59 e4 2a 86 dd 60 00 00 00 00 3c 06 36 2a 03 28 80 f0 1c 80 0e fa ce b0 0c 00 00 00 02 2a 01 cb 10 05 a2 e1 00 5d bb b1 a5 f8 7a f3 37 01 bb d5 38 57 60 6d c2 26 12 24 28 80 18 02 73 da 59 00 00 01 01 08 0a 13 87 fa a4 ec 2b 79 b1 17 03 03 00 17 4e b2 04 95 3b d0 85 ca cd 70 c8 fe 11 30 25 f9 ba 13 31 6b ef cf 5d 
+ the interfaces present on the system are:voici ce qu'on stock wlp2s0
+Device: wlp2s0
+Device is open
+
+
+TRAME 1
+30 7c b2 59 e4 29 1c 1b b5 b3 26 21 86 dd 60 05 0b 7d 00 4d 06 40 2a 01 cb 10 05 a2 e1 00 8d 5c 3b 8b 30 64 b2 e0 2a 03 28 80 f0 2d 00 0e fa ce b0 0c 00 00 00 02 ac 76 01 bb 90 85 5b fe 93 8d ef bf 80 18 01 f5 f0 72 00 00 01 01 08 0a 1a db 5c 6c 3c 65 d3 2d 17 03 03 00 28 6f 30 f2 be 41 4e c9 9b cd 41 a2 eb c9 81 e1 fd e3 9a 5b 73 4b b5 e0 62 ce 8c a9 63 85 06 cc 69 e4 3e 36 c0 c6 6c 23 ae 
+
+ANALYSE ETHERNET : 
+
+	Destination host address : 30:7c:b2:59:e4:29
+	Source host address : 1c:1b:b5:b3:26:21
+
+ANALYSE ipv6
+	Version : 96
+	Next header : 0x6
+	Payload length : 77
+	Hop limit : 64
+	Flow ID : 1610943357
+	Destination adress : cccv 2a03:2880:f02d:e:face:b00c:0:2
+	Source adress : cccv 2a01:cb10:5a2:e100:8d5c:3b8b:3064:b2e0
+
+ANALYSE TCP
+
+	Source port : 44150
+	Destination port : 443
+	Sequence number : 0x90855bfe
+	Acknowledgement number : 0x938defbf
+	Data offset : 8
+	 => total size : 32 bytes
+	Flags : 0x18
+		PUSH: receiver must push data to app and doesnt wait the tampon filling
+		ACK: ACK num seq
+	Window : 501
+	Checksum : 0xf072
+	Urgent pointer : 0
+
+----------------------------------------------------------
+
+TRAME 2
+1c 1b b5 b3 26 21 30 7c b2 59 e4 2a 86 dd 60 00 00 00 00 3e 06 35 2a 03 28 80 f0 2d 00 0e fa ce b0 0c 00 00 00 02 2a 01 cb 10 05 a2 e1 00 8d 5c 3b 8b 30 64 b2 e0 01 bb ac 76 93 8d ef bf 90 85 5c 2b 80 18 03 0f 97 98 00 00 01 01 08 0a 3c 65 ee 86 1a db 5c 6c 17 03 03 00 19 93 f7 48 6a 77 db 06 39 7c c7 74 d6 51 3f 96 01 96 b4 88 fb 2d 57 6e 16 1d 
 
 ANALYSE ETHERNET : 
 
@@ -161,31 +803,31 @@ ANALYSE ETHERNET :
 ANALYSE ipv6
 	Version : 96
 	Next header : 0x6
-	Payload length : 60
-	Hop limit : 54
+	Payload length : 62
+	Hop limit : 53
 	Flow ID : 1610612736
-	Destination adress : cccv 2a01:cb10:5a2:e100:5dbb:b1a5:f87a:f337
-	Source adress : cccv 2a03:2880:f01c:800e:face:b00c:0:2
+	Destination adress : cccv 2a01:cb10:5a2:e100:8d5c:3b8b:3064:b2e0
+	Source adress : cccv 2a03:2880:f02d:e:face:b00c:0:2
 
 ANALYSE TCP
 
 	Source port : 443
-	Destination port : 54584
-	Sequence number : 0x57606dc2
-	Acknowledgement number : 0x26122428
+	Destination port : 44150
+	Sequence number : 0x938defbf
+	Acknowledgement number : 0x90855c2b
 	Data offset : 8
 	 => total size : 32 bytes
 	Flags : 0x18
 		PUSH: receiver must push data to app and doesnt wait the tampon filling
 		ACK: ACK num seq
-	Window : 627
-	Checksum : 0xda59
+	Window : 783
+	Checksum : 0x9798
 	Urgent pointer : 0
 
 ----------------------------------------------------------
 
-TRAME 7
-30 7c b2 59 e4 29 1c 1b b5 b3 26 21 86 dd 60 04 3f a9 00 20 06 40 2a 01 cb 10 05 a2 e1 00 5d bb b1 a5 f8 7a f3 37 2a 03 28 80 f0 1c 80 0e fa ce b0 0c 00 00 00 02 d5 38 01 bb 26 12 24 28 57 60 6d de 80 10 01 f5 d5 e7 00 00 01 01 08 0a ec 2b 79 c7 13 87 fa a4 
+TRAME 3
+30 7c b2 59 e4 29 1c 1b b5 b3 26 21 86 dd 60 05 0b 7d 00 20 06 40 2a 01 cb 10 05 a2 e1 00 8d 5c 3b 8b 30 64 b2 e0 2a 03 28 80 f0 2d 00 0e fa ce b0 0c 00 00 00 02 ac 76 01 bb 90 85 5c 2b 93 8d ef dd 80 10 01 f5 3e b3 00 00 01 01 08 0a 1a db 5c 82 3c 65 ee 86 
 
 ANALYSE ETHERNET : 
 
@@ -197,384 +839,504 @@ ANALYSE ipv6
 	Next header : 0x6
 	Payload length : 32
 	Hop limit : 64
-	Flow ID : 1610891177
-	Destination adress : cccv 2a03:2880:f01c:800e:face:b00c:0:2
-	Source adress : cccv 2a01:cb10:5a2:e100:5dbb:b1a5:f87a:f337
+	Flow ID : 1610943357
+	Destination adress : cccv 2a03:2880:f02d:e:face:b00c:0:2
+	Source adress : cccv 2a01:cb10:5a2:e100:8d5c:3b8b:3064:b2e0
 
 ANALYSE TCP
 
-	Source port : 54584
+	Source port : 44150
 	Destination port : 443
-	Sequence number : 0x26122428
-	Acknowledgement number : 0x57606dde
+	Sequence number : 0x90855c2b
+	Acknowledgement number : 0x938defdd
 	Data offset : 8
 	 => total size : 32 bytes
 	Flags : 0x10
 		ACK: ACK num seq
 	Window : 501
-	Checksum : 0xd5e7
+	Checksum : 0x3eb3
 	Urgent pointer : 0
 
 ----------------------------------------------------------
 
+TRAME 4
+ff ff ff ff ff ff 30 7c b2 59 e4 29 08 06 00 01 08 00 06 04 00 01 30 7c b2 59 e4 29 c0 a8 01 01 00 00 00 00 00 00 c0 a8 01 16 
+
+ANALYSE ETHERNET : 
+
+	Destination host address : ff:ff:ff:ff:ff:ff
+	Source host address : 30:7c:b2:59:e4:29
+ARP :
+	from  30:7c:b2:59:e4:29
+	to  ff:ff:ff:ff:ff:ff
+	Format of hardware address 256
+	Format of protocol address 8
+	hardware type : 1  Ethernel 10Mbps
+	Length of hardware protocol address: 6
+	Length of protocol address: 4
+	OpCode: 256
+		request:1
+			Who has 192.168.1.22 ?
+			Tell 192.168.1.1
+
+----------------------------------------------------------
+
+TRAME 5
+ff ff ff ff ff ff 30 7c b2 59 e4 29 08 06 00 01 08 00 06 04 00 01 30 7c b2 59 e4 29 c0 a8 01 01 00 00 00 00 00 00 c0 a8 01 26 
+
+ANALYSE ETHERNET : 
+
+	Destination host address : ff:ff:ff:ff:ff:ff
+	Source host address : 30:7c:b2:59:e4:29
+ARP :
+	from  30:7c:b2:59:e4:29
+	to  ff:ff:ff:ff:ff:ff
+	Format of hardware address 256
+	Format of protocol address 8
+	hardware type : 1  Ethernel 10Mbps
+	Length of hardware protocol address: 6
+	Length of protocol address: 4
+	OpCode: 256
+		request:1
+			Who has 192.168.1.38 ?
+			Tell 192.168.1.1
+
+----------------------------------------------------------
+
+TRAME 6
+ff ff ff ff ff ff 30 7c b2 59 e4 29 08 06 00 01 08 00 06 04 00 01 30 7c b2 59 e4 29 c0 a8 01 01 00 00 00 00 00 00 c0 a8 01 19 
+
+ANALYSE ETHERNET : 
+
+	Destination host address : ff:ff:ff:ff:ff:ff
+	Source host address : 30:7c:b2:59:e4:29
+ARP :
+	from  30:7c:b2:59:e4:29
+	to  ff:ff:ff:ff:ff:ff
+	Format of hardware address 256
+	Format of protocol address 8
+	hardware type : 1  Ethernel 10Mbps
+	Length of hardware protocol address: 6
+	Length of protocol address: 4
+	OpCode: 256
+		request:1
+			Who has 192.168.1.25 ?
+			Tell 192.168.1.1
+
+----------------------------------------------------------
+
+TRAME 7
+ff ff ff ff ff ff 30 7c b2 59 e4 29 08 06 00 01 08 00 06 04 00 01 30 7c b2 59 e4 29 c0 a8 01 01 00 00 00 00 00 00 c0 a8 01 1f 
+
+ANALYSE ETHERNET : 
+
+	Destination host address : ff:ff:ff:ff:ff:ff
+	Source host address : 30:7c:b2:59:e4:29
+ARP :
+	from  30:7c:b2:59:e4:29
+	to  ff:ff:ff:ff:ff:ff
+	Format of hardware address 256
+	Format of protocol address 8
+	hardware type : 1  Ethernel 10Mbps
+	Length of hardware protocol address: 6
+	Length of protocol address: 4
+	OpCode: 256
+		request:1
+			Who has 192.168.1.31 ?
+			Tell 192.168.1.1
+
+----------------------------------------------------------
+
 TRAME 8
-ff ff ff ff ff ff 30 7c b2 59 e4 29 08 06 00 01 08 00 06 04 00 01 30 7c b2 59 e4 29 c0 a8 01 01 00 00 00 00 00 00 c0 a8 01 16 
-
-ANALYSE ETHERNET : 
-
-	Destination host address : ff:ff:ff:ff:ff:ff
-	Source host address : 30:7c:b2:59:e4:29
-Type pas encore étudié
-
-----------------------------------------------------------
-
-TRAME 9
-ff ff ff ff ff ff 30 7c b2 59 e4 29 08 06 00 01 08 00 06 04 00 01 30 7c b2 59 e4 29 c0 a8 01 01 00 00 00 00 00 00 c0 a8 01 16 
-
-ANALYSE ETHERNET : 
-
-	Destination host address : ff:ff:ff:ff:ff:ff
-	Source host address : 30:7c:b2:59:e4:29
-Type pas encore étudié
-
-----------------------------------------------------------
-
-TRAME 10
-30 7c b2 59 e4 29 1c 1b b5 b3 26 21 08 00 45 00 00 28 c9 93 40 00 40 06 12 1b c0 a8 01 22 68 16 35 41 b2 d6 01 bb 98 64 68 88 a5 86 d2 94 50 10 01 f5 21 24 00 00 
+30 7c b2 59 e4 29 1c 1b b5 b3 26 21 86 dd 60 05 0b 7d 00 40 06 40 2a 01 cb 10 05 a2 e1 00 8d 5c 3b 8b 30 64 b2 e0 2a 03 28 80 f0 2d 00 0e fa ce b0 0c 00 00 00 02 ac 76 01 bb 90 85 5c 2b 93 8d ef dd 80 18 01 f5 37 8a 00 00 01 01 08 0a 1a db 68 22 3c 65 ee 86 17 03 03 00 1b a4 1e eb 71 46 57 f2 e4 58 e6 2d a7 36 9a 68 33 03 75 fb 2d c5 ba 9d 12 51 2d bd 
 
 ANALYSE ETHERNET : 
 
 	Destination host address : 30:7c:b2:59:e4:29
 	Source host address : 1c:1b:b5:b3:26:21
 
-ANALYSE IPv4
-
-	Version : IPv4
-	Header length : 20 bytes
-	Type of service : 0
-	Total length : 40 bytes
-	Identification : 51603
-	Fragment offset field : 64
-	Time to live : 64
-	Type of following protocol : 6
-	Destination address:104.22.53.65hellllo
-	Source address: 192.168.1.34hellllo
+ANALYSE ipv6
+	Version : 96
+	Next header : 0x6
+	Payload length : 64
+	Hop limit : 64
+	Flow ID : 1610943357
+	Destination adress : cccv 2a03:2880:f02d:e:face:b00c:0:2
+	Source adress : cccv 2a01:cb10:5a2:e100:8d5c:3b8b:3064:b2e0
 
 ANALYSE TCP
 
-	Source port : 45782
+	Source port : 44150
 	Destination port : 443
-	Sequence number : 0x98646888
-	Acknowledgement number : 0xa586d294
-	Data offset : 5
-	 => total size : 20 bytes
-	Flags : 0x10
+	Sequence number : 0x90855c2b
+	Acknowledgement number : 0x938defdd
+	Data offset : 8
+	 => total size : 32 bytes
+	Flags : 0x18
+		PUSH: receiver must push data to app and doesnt wait the tampon filling
 		ACK: ACK num seq
 	Window : 501
-	Checksum : 0x2124
+	Checksum : 0x378a
 	Urgent pointer : 0
 
 ----------------------------------------------------------
 
-TRAME 11
-1c 1b b5 b3 26 21 30 7c b2 59 e4 2a 08 00 45 00 00 28 c1 91 40 00 39 06 21 1d 68 16 35 41 c0 a8 01 22 01 bb b2 d6 a5 86 d2 94 98 64 68 89 50 10 00 44 22 d4 00 00 00 00 
+TRAME 9
+1c 1b b5 b3 26 21 30 7c b2 59 e4 2a 86 dd 60 00 00 00 00 20 06 35 2a 03 28 80 f0 2d 00 0e fa ce b0 0c 00 00 00 02 2a 01 cb 10 05 a2 e1 00 8d 5c 3b 8b 30 64 b2 e0 01 bb ac 76 93 8d ef dd 90 85 5c 4b 80 10 03 0f 26 08 00 00 01 01 08 0a 3c 65 fa 57 1a db 68 22 
 
 ANALYSE ETHERNET : 
 
 	Destination host address : 1c:1b:b5:b3:26:21
 	Source host address : 30:7c:b2:59:e4:2a
 
-ANALYSE IPv4
-
-	Version : IPv4
-	Header length : 20 bytes
-	Type of service : 0
-	Total length : 40 bytes
-	Identification : 49553
-	Fragment offset field : 64
-	Time to live : 57
-	Type of following protocol : 6
-	Destination address:192.168.1.34hellllo
-	Source address: 104.22.53.65hellllo
+ANALYSE ipv6
+	Version : 96
+	Next header : 0x6
+	Payload length : 32
+	Hop limit : 53
+	Flow ID : 1610612736
+	Destination adress : cccv 2a01:cb10:5a2:e100:8d5c:3b8b:3064:b2e0
+	Source adress : cccv 2a03:2880:f02d:e:face:b00c:0:2
 
 ANALYSE TCP
 
 	Source port : 443
-	Destination port : 45782
-	Sequence number : 0xa586d294
-	Acknowledgement number : 0x98646889
-	Data offset : 5
-	 => total size : 20 bytes
+	Destination port : 44150
+	Sequence number : 0x938defdd
+	Acknowledgement number : 0x90855c4b
+	Data offset : 8
+	 => total size : 32 bytes
 	Flags : 0x10
 		ACK: ACK num seq
-	Window : 68
-	Checksum : 0x22d4
+	Window : 783
+	Checksum : 0x2608
+	Urgent pointer : 0
+
+----------------------------------------------------------
+
+TRAME 10
+1c 1b b5 b3 26 21 30 7c b2 59 e4 2a 86 dd 60 00 00 00 00 3c 06 35 2a 03 28 80 f0 2d 00 0e fa ce b0 0c 00 00 00 02 2a 01 cb 10 05 a2 e1 00 8d 5c 3b 8b 30 64 b2 e0 01 bb ac 76 93 8d ef dd 90 85 5c 4b 80 18 03 0f 5b c8 00 00 01 01 08 0a 3c 65 fa 7f 1a db 68 22 17 03 03 00 17 30 aa 2b 56 1c 5c cd f2 f8 13 6e be 33 68 45 ad 9e 15 00 17 67 34 c5 
+
+ANALYSE ETHERNET : 
+
+	Destination host address : 1c:1b:b5:b3:26:21
+	Source host address : 30:7c:b2:59:e4:2a
+
+ANALYSE ipv6
+	Version : 96
+	Next header : 0x6
+	Payload length : 60
+	Hop limit : 53
+	Flow ID : 1610612736
+	Destination adress : cccv 2a01:cb10:5a2:e100:8d5c:3b8b:3064:b2e0
+	Source adress : cccv 2a03:2880:f02d:e:face:b00c:0:2
+
+ANALYSE TCP
+
+	Source port : 443
+	Destination port : 44150
+	Sequence number : 0x938defdd
+	Acknowledgement number : 0x90855c4b
+	Data offset : 8
+	 => total size : 32 bytes
+	Flags : 0x18
+		PUSH: receiver must push data to app and doesnt wait the tampon filling
+		ACK: ACK num seq
+	Window : 783
+	Checksum : 0x5bc8
+	Urgent pointer : 0
+
+----------------------------------------------------------
+
+TRAME 11
+30 7c b2 59 e4 29 1c 1b b5 b3 26 21 86 dd 60 05 0b 7d 00 20 06 40 2a 01 cb 10 05 a2 e1 00 8d 5c 3b 8b 30 64 b2 e0 2a 03 28 80 f0 2d 00 0e fa ce b0 0c 00 00 00 02 ac 76 01 bb 90 85 5c 4b 93 8d ef f9 80 10 01 f5 26 84 00 00 01 01 08 0a 1a db 68 7c 3c 65 fa 7f 
+
+ANALYSE ETHERNET : 
+
+	Destination host address : 30:7c:b2:59:e4:29
+	Source host address : 1c:1b:b5:b3:26:21
+
+ANALYSE ipv6
+	Version : 96
+	Next header : 0x6
+	Payload length : 32
+	Hop limit : 64
+	Flow ID : 1610943357
+	Destination adress : cccv 2a03:2880:f02d:e:face:b00c:0:2
+	Source adress : cccv 2a01:cb10:5a2:e100:8d5c:3b8b:3064:b2e0
+
+ANALYSE TCP
+
+	Source port : 44150
+	Destination port : 443
+	Sequence number : 0x90855c4b
+	Acknowledgement number : 0x938deff9
+	Data offset : 8
+	 => total size : 32 bytes
+	Flags : 0x10
+		ACK: ACK num seq
+	Window : 501
+	Checksum : 0x2684
 	Urgent pointer : 0
 
 ----------------------------------------------------------
 
 TRAME 12
+30 7c b2 59 e4 29 1c 1b b5 b3 26 21 08 00 45 00 00 8b cc 3b 40 00 40 06 24 eb c0 a8 01 22 23 e0 63 9c e3 9c 00 50 54 f5 c7 cd 23 03 24 fa 80 18 01 f6 c5 ce 00 00 01 01 08 0a a2 48 e6 ca d4 53 fd f6 47 45 54 20 2f 20 48 54 54 50 2f 31 2e 31 0d 0a 48 6f 73 74 3a 20 63 6f 6e 6e 65 63 74 69 76 69 74 79 2d 63 68 65 63 6b 2e 75 62 75 6e 74 75 2e 63 6f 6d 0d 0a 41 63 63 65 70 74 3a 20 2a 2f 2a 0d 0a 43 6f 6e 6e 65 63 74 69 6f 6e 3a 20 63 6c 6f 73 65 0d 0a 0d 0a 
+
+ANALYSE ETHERNET : 
+
+	Destination host address : 30:7c:b2:59:e4:29
+	Source host address : 1c:1b:b5:b3:26:21
+
+ANALYSE IPv4
+
+	Version : IPv4
+	Header length : 20 bytes
+	Type of service : 0
+	Total length : 139 bytes
+	Identification : 52283
+	Fragment offset field : 64
+	Time to live : 64
+	Type of following protocol : 6
+	Destination address:35.224.99.156
+	Source address: 192.168.1.34
+
+ANALYSE TCP
+
+	Source port : 58268
+	Destination port : 80
+	Sequence number : 0x54f5c7cd
+	Acknowledgement number : 0x230324fa
+	Data offset : 8
+	 => total size : 32 bytes
+	Flags : 0x18
+		PUSH: receiver must push data to app and doesnt wait the tampon filling
+		ACK: ACK num seq
+	Window : 502
+	Checksum : 0xc5ce
+	Urgent pointer : 0
+
+----------------------------------------------------------
+
+TRAME 13
 ff ff ff ff ff ff 30 7c b2 59 e4 29 08 06 00 01 08 00 06 04 00 01 30 7c b2 59 e4 29 c0 a8 01 01 00 00 00 00 00 00 c0 a8 01 16 
 
 ANALYSE ETHERNET : 
 
 	Destination host address : ff:ff:ff:ff:ff:ff
 	Source host address : 30:7c:b2:59:e4:29
-Type pas encore étudié
-
-----------------------------------------------------------
-
-TRAME 13
-30 7c b2 59 e4 29 1c 1b b5 b3 26 21 08 00 45 00 00 5e a5 3a 40 00 40 11 11 e1 c0 a8 01 22 c0 a8 01 01 bc 0d 00 35 00 4a cb f6 4b 24 01 00 00 01 00 00 00 00 00 01 06 61 73 69 6d 6f 76 06 76 6f 72 74 65 78 04 64 61 74 61 0e 74 72 61 66 66 69 63 6d 61 6e 61 67 65 72 03 6e 65 74 00 00 01 00 01 00 00 29 02 00 00 00 00 00 00 00 
-
-ANALYSE ETHERNET : 
-
-	Destination host address : 30:7c:b2:59:e4:29
-	Source host address : 1c:1b:b5:b3:26:21
-
-ANALYSE IPv4
-
-	Version : IPv4
-	Header length : 20 bytes
-	Type of service : 0
-	Total length : 94 bytes
-	Identification : 42298
-	Fragment offset field : 64
-	Time to live : 64
-	Type of following protocol : 17
-	Destination address:192.168.1.1hellllo
-	Source address: 192.168.1.34hellllo
-
-ANALYSE UDP
-	Source port : 48141
-	Destination port : 53
-	UDP length : 74 bytes
-	UDP checksum : 0xcbf6
-Analyse protocole autre que bootp non disponible
+ARP :
+	from  30:7c:b2:59:e4:29
+	to  ff:ff:ff:ff:ff:ff
+	Format of hardware address 256
+	Format of protocol address 8
+	hardware type : 1  Ethernel 10Mbps
+	Length of hardware protocol address: 6
+	Length of protocol address: 4
+	OpCode: 256
+		request:1
+			Who has 192.168.1.22 ?
+			Tell 192.168.1.1
 
 ----------------------------------------------------------
 
 TRAME 14
-30 7c b2 59 e4 29 1c 1b b5 b3 26 21 08 00 45 00 00 5e a5 3b 40 00 40 11 11 e0 c0 a8 01 22 c0 a8 01 01 b4 39 00 35 00 4a d3 39 30 b5 01 00 00 01 00 00 00 00 00 01 06 61 73 69 6d 6f 76 06 76 6f 72 74 65 78 04 64 61 74 61 0e 74 72 61 66 66 69 63 6d 61 6e 61 67 65 72 03 6e 65 74 00 00 1c 00 01 00 00 29 02 00 00 00 00 00 00 00 
+ff ff ff ff ff ff 30 7c b2 59 e4 29 08 06 00 01 08 00 06 04 00 01 30 7c b2 59 e4 29 c0 a8 01 01 00 00 00 00 00 00 c0 a8 01 26 
 
 ANALYSE ETHERNET : 
 
-	Destination host address : 30:7c:b2:59:e4:29
-	Source host address : 1c:1b:b5:b3:26:21
-
-ANALYSE IPv4
-
-	Version : IPv4
-	Header length : 20 bytes
-	Type of service : 0
-	Total length : 94 bytes
-	Identification : 42299
-	Fragment offset field : 64
-	Time to live : 64
-	Type of following protocol : 17
-	Destination address:192.168.1.1hellllo
-	Source address: 192.168.1.34hellllo
-
-ANALYSE UDP
-	Source port : 46137
-	Destination port : 53
-	UDP length : 74 bytes
-	UDP checksum : 0xd339
-Analyse protocole autre que bootp non disponible
+	Destination host address : ff:ff:ff:ff:ff:ff
+	Source host address : 30:7c:b2:59:e4:29
+ARP :
+	from  30:7c:b2:59:e4:29
+	to  ff:ff:ff:ff:ff:ff
+	Format of hardware address 256
+	Format of protocol address 8
+	hardware type : 1  Ethernel 10Mbps
+	Length of hardware protocol address: 6
+	Length of protocol address: 4
+	OpCode: 256
+		request:1
+			Who has 192.168.1.38 ?
+			Tell 192.168.1.1
 
 ----------------------------------------------------------
 
 TRAME 15
-1c 1b b5 b3 26 21 30 7c b2 59 e4 29 08 00 45 00 00 83 00 00 40 00 40 11 b6 f6 c0 a8 01 01 c0 a8 01 22 00 35 bc 0d 00 6f 47 79 4b 24 81 80 00 01 00 02 00 00 00 01 06 61 73 69 6d 6f 76 06 76 6f 72 74 65 78 04 64 61 74 61 0e 74 72 61 66 66 69 63 6d 61 6e 61 67 65 72 03 6e 65 74 00 00 01 00 01 c0 0c 00 05 00 01 00 00 00 2d 00 09 06 67 6c 6f 62 61 6c c0 13 c0 43 00 01 00 01 00 00 00 2e 00 04 28 4d e2 fa 00 00 29 04 d0 00 00 00 00 00 00 
+ff ff ff ff ff ff 30 7c b2 59 e4 29 08 06 00 01 08 00 06 04 00 01 30 7c b2 59 e4 29 c0 a8 01 01 00 00 00 00 00 00 c0 a8 01 19 
 
 ANALYSE ETHERNET : 
 
-	Destination host address : 1c:1b:b5:b3:26:21
+	Destination host address : ff:ff:ff:ff:ff:ff
 	Source host address : 30:7c:b2:59:e4:29
-
-ANALYSE IPv4
-
-	Version : IPv4
-	Header length : 20 bytes
-	Type of service : 0
-	Total length : 131 bytes
-	Identification : 0
-	Fragment offset field : 64
-	Time to live : 64
-	Type of following protocol : 17
-	Destination address:192.168.1.34hellllo
-	Source address: 192.168.1.1hellllo
-
-ANALYSE UDP
-	Source port : 53
-	Destination port : 48141
-	UDP length : 111 bytes
-	UDP checksum : 0x4779
-Analyse protocole autre que bootp non disponible
+ARP :
+	from  30:7c:b2:59:e4:29
+	to  ff:ff:ff:ff:ff:ff
+	Format of hardware address 256
+	Format of protocol address 8
+	hardware type : 1  Ethernel 10Mbps
+	Length of hardware protocol address: 6
+	Length of protocol address: 4
+	OpCode: 256
+		request:1
+			Who has 192.168.1.25 ?
+			Tell 192.168.1.1
 
 ----------------------------------------------------------
 
 TRAME 16
-1c 1b b5 b3 26 21 30 7c b2 59 e4 29 08 00 45 00 00 b0 00 00 40 00 40 11 b6 c9 c0 a8 01 01 c0 a8 01 22 00 35 b4 39 00 9c ef 88 30 b5 81 80 00 01 00 01 00 01 00 01 06 61 73 69 6d 6f 76 06 76 6f 72 74 65 78 04 64 61 74 61 0e 74 72 61 66 66 69 63 6d 61 6e 61 67 65 72 03 6e 65 74 00 00 1c 00 01 c0 0c 00 05 00 01 00 00 00 2d 00 09 06 67 6c 6f 62 61 6c c0 13 c0 1f 00 06 00 01 00 00 00 0a 00 31 03 74 6d 31 06 64 6e 73 2d 74 6d 03 63 6f 6d 00 0a 68 6f 73 74 6d 61 73 74 65 72 c0 1f 77 64 96 60 00 00 03 84 00 00 01 2c 00 24 ea 00 00 00 00 1e 00 00 29 04 d0 00 00 00 00 00 00 
+ff ff ff ff ff ff 30 7c b2 59 e4 29 08 06 00 01 08 00 06 04 00 01 30 7c b2 59 e4 29 c0 a8 01 01 00 00 00 00 00 00 c0 a8 01 1f 
 
 ANALYSE ETHERNET : 
 
-	Destination host address : 1c:1b:b5:b3:26:21
+	Destination host address : ff:ff:ff:ff:ff:ff
 	Source host address : 30:7c:b2:59:e4:29
-
-ANALYSE IPv4
-
-	Version : IPv4
-	Header length : 20 bytes
-	Type of service : 0
-	Total length : 176 bytes
-	Identification : 0
-	Fragment offset field : 64
-	Time to live : 64
-	Type of following protocol : 17
-	Destination address:192.168.1.34hellllo
-	Source address: 192.168.1.1hellllo
-
-ANALYSE UDP
-	Source port : 53
-	Destination port : 46137
-	UDP length : 156 bytes
-	UDP checksum : 0xef88
-Analyse protocole autre que bootp non disponible
+ARP :
+	from  30:7c:b2:59:e4:29
+	to  ff:ff:ff:ff:ff:ff
+	Format of hardware address 256
+	Format of protocol address 8
+	hardware type : 1  Ethernel 10Mbps
+	Length of hardware protocol address: 6
+	Length of protocol address: 4
+	OpCode: 256
+		request:1
+			Who has 192.168.1.31 ?
+			Tell 192.168.1.1
 
 ----------------------------------------------------------
 
 TRAME 17
-30 7c b2 59 e4 29 1c 1b b5 b3 26 21 08 00 45 00 00 5e a5 3d 40 00 40 11 11 de c0 a8 01 22 c0 a8 01 01 a9 a0 00 35 00 4a 11 1c 19 6e 01 00 00 01 00 00 00 00 00 01 06 67 6c 6f 62 61 6c 06 76 6f 72 74 65 78 04 64 61 74 61 0e 74 72 61 66 66 69 63 6d 61 6e 61 67 65 72 03 6e 65 74 00 00 1c 00 01 00 00 29 02 00 00 00 00 00 00 00 
+30 7c b2 59 e4 29 1c 1b b5 b3 26 21 86 dd 60 05 0b 7d 00 4e 06 40 2a 01 cb 10 05 a2 e1 00 8d 5c 3b 8b 30 64 b2 e0 2a 03 28 80 f0 2d 00 0e fa ce b0 0c 00 00 00 02 ac 76 01 bb 90 85 5c 4b 93 8d ef f9 80 18 01 f5 a3 39 00 00 01 01 08 0a 1a db 77 c3 3c 65 fa 7f 17 03 03 00 29 9d 75 49 8a 54 34 6e 13 f9 0f 5e 93 9d 25 a0 f2 97 54 30 2e e5 6c 05 ff 69 1f 1e ef 69 24 d1 9e 1a 38 32 75 12 79 da 45 dc 
 
 ANALYSE ETHERNET : 
 
 	Destination host address : 30:7c:b2:59:e4:29
 	Source host address : 1c:1b:b5:b3:26:21
 
-ANALYSE IPv4
+ANALYSE ipv6
+	Version : 96
+	Next header : 0x6
+	Payload length : 78
+	Hop limit : 64
+	Flow ID : 1610943357
+	Destination adress : cccv 2a03:2880:f02d:e:face:b00c:0:2
+	Source adress : cccv 2a01:cb10:5a2:e100:8d5c:3b8b:3064:b2e0
 
-	Version : IPv4
-	Header length : 20 bytes
-	Type of service : 0
-	Total length : 94 bytes
-	Identification : 42301
-	Fragment offset field : 64
-	Time to live : 64
-	Type of following protocol : 17
-	Destination address:192.168.1.1hellllo
-	Source address: 192.168.1.34hellllo
+ANALYSE TCP
 
-ANALYSE UDP
-	Source port : 43424
-	Destination port : 53
-	UDP length : 74 bytes
-	UDP checksum : 0x111c
-Analyse protocole autre que bootp non disponible
+	Source port : 44150
+	Destination port : 443
+	Sequence number : 0x90855c4b
+	Acknowledgement number : 0x938deff9
+	Data offset : 8
+	 => total size : 32 bytes
+	Flags : 0x18
+		PUSH: receiver must push data to app and doesnt wait the tampon filling
+		ACK: ACK num seq
+	Window : 501
+	Checksum : 0xa339
+	Urgent pointer : 0
 
 ----------------------------------------------------------
 
 TRAME 18
-1c 1b b5 b3 26 21 30 7c b2 59 e4 29 08 00 45 00 00 5e 00 00 40 00 40 11 b7 1b c0 a8 01 01 c0 a8 01 22 00 35 a9 a0 00 4a 82 9b 19 6e 81 80 00 01 00 00 00 00 00 01 06 67 6c 6f 62 61 6c 06 76 6f 72 74 65 78 04 64 61 74 61 0e 74 72 61 66 66 69 63 6d 61 6e 61 67 65 72 03 6e 65 74 00 00 1c 00 01 00 00 29 10 00 00 00 00 00 00 00 
+1c 1b b5 b3 26 21 30 7c b2 59 e4 2a 86 dd 60 00 00 00 00 20 06 35 2a 03 28 80 f0 2d 00 0e fa ce b0 0c 00 00 00 02 2a 01 cb 10 05 a2 e1 00 8d 5c 3b 8b 30 64 b2 e0 01 bb ac 76 93 8d ef f9 90 85 5c 79 80 10 03 0f 06 a5 00 00 01 01 08 0a 3c 66 09 cf 1a db 77 c3 
 
 ANALYSE ETHERNET : 
 
 	Destination host address : 1c:1b:b5:b3:26:21
-	Source host address : 30:7c:b2:59:e4:29
+	Source host address : 30:7c:b2:59:e4:2a
 
-ANALYSE IPv4
+ANALYSE ipv6
+	Version : 96
+	Next header : 0x6
+	Payload length : 32
+	Hop limit : 53
+	Flow ID : 1610612736
+	Destination adress : cccv 2a01:cb10:5a2:e100:8d5c:3b8b:3064:b2e0
+	Source adress : cccv 2a03:2880:f02d:e:face:b00c:0:2
 
-	Version : IPv4
-	Header length : 20 bytes
-	Type of service : 0
-	Total length : 94 bytes
-	Identification : 0
-	Fragment offset field : 64
-	Time to live : 64
-	Type of following protocol : 17
-	Destination address:192.168.1.34hellllo
-	Source address: 192.168.1.1hellllo
+ANALYSE TCP
 
-ANALYSE UDP
-	Source port : 53
-	Destination port : 43424
-	UDP length : 74 bytes
-	UDP checksum : 0x829b
-Analyse protocole autre que bootp non disponible
+	Source port : 443
+	Destination port : 44150
+	Sequence number : 0x938deff9
+	Acknowledgement number : 0x90855c79
+	Data offset : 8
+	 => total size : 32 bytes
+	Flags : 0x10
+		ACK: ACK num seq
+	Window : 783
+	Checksum : 0x6a5
+	Urgent pointer : 0
 
 ----------------------------------------------------------
 
 TRAME 19
-30 7c b2 59 e4 29 1c 1b b5 b3 26 21 08 00 45 00 00 3c d1 5b 40 00 40 06 9c 4e c0 a8 01 22 28 4d e2 fa b6 d2 01 bb a8 f1 5a 60 00 00 00 00 a0 02 fa f0 f9 6f 00 00 02 04 05 b4 04 02 08 0a 9a 19 30 94 00 00 00 00 01 03 03 07 
+1c 1b b5 b3 26 21 30 7c b2 59 e4 2a 86 dd 60 00 00 00 00 3e 06 35 2a 03 28 80 f0 2d 00 0e fa ce b0 0c 00 00 00 02 2a 01 cb 10 05 a2 e1 00 8d 5c 3b 8b 30 64 b2 e0 01 bb ac 76 93 8d ef f9 90 85 5c 79 80 18 03 0f ee 87 00 00 01 01 08 0a 3c 66 09 dd 1a db 77 c3 17 03 03 00 19 b8 f7 e0 dd a2 0b eb af 31 dc 0c fc 3a a4 67 f6 b8 d1 26 2e 9c 88 f1 57 70 
 
 ANALYSE ETHERNET : 
 
-	Destination host address : 30:7c:b2:59:e4:29
-	Source host address : 1c:1b:b5:b3:26:21
+	Destination host address : 1c:1b:b5:b3:26:21
+	Source host address : 30:7c:b2:59:e4:2a
 
-ANALYSE IPv4
-
-	Version : IPv4
-	Header length : 20 bytes
-	Type of service : 0
-	Total length : 60 bytes
-	Identification : 53595
-	Fragment offset field : 64
-	Time to live : 64
-	Type of following protocol : 6
-	Destination address:40.77.226.250hellllo
-	Source address: 192.168.1.34hellllo
+ANALYSE ipv6
+	Version : 96
+	Next header : 0x6
+	Payload length : 62
+	Hop limit : 53
+	Flow ID : 1610612736
+	Destination adress : cccv 2a01:cb10:5a2:e100:8d5c:3b8b:3064:b2e0
+	Source adress : cccv 2a03:2880:f02d:e:face:b00c:0:2
 
 ANALYSE TCP
 
-	Source port : 46802
-	Destination port : 443
-	Sequence number : 0xa8f15a60
-	Acknowledgement number : 0x00
-	Data offset : 10
-	 => total size : 40 bytes
-	Flags : 0x02
-		SYN: synchronisation num seq
-	Window : 64240
-	Checksum : 0xf96f
+	Source port : 443
+	Destination port : 44150
+	Sequence number : 0x938deff9
+	Acknowledgement number : 0x90855c79
+	Data offset : 8
+	 => total size : 32 bytes
+	Flags : 0x18
+		PUSH: receiver must push data to app and doesnt wait the tampon filling
+		ACK: ACK num seq
+	Window : 783
+	Checksum : 0xee87
 	Urgent pointer : 0
 
 ----------------------------------------------------------
 
 TRAME 20
-1c 1b b5 b3 26 21 30 7c b2 59 e4 29 08 00 45 00 00 3c 64 a8 40 00 6f 06 da 01 28 4d e2 fa c0 a8 01 22 01 bb b6 d2 3e 04 48 9d a8 f1 5a 61 a0 12 20 00 8e d8 00 00 02 04 05 a0 01 03 03 08 04 02 08 0a 05 f9 b8 ef 9a 19 30 94 
+30 7c b2 59 e4 29 1c 1b b5 b3 26 21 86 dd 60 05 0b 7d 00 20 06 40 2a 01 cb 10 05 a2 e1 00 8d 5c 3b 8b 30 64 b2 e0 2a 03 28 80 f0 2d 00 0e fa ce b0 0c 00 00 00 02 ac 76 01 bb 90 85 5c 79 93 8d f0 17 80 10 01 f5 07 7c 00 00 01 01 08 0a 1a db 77 da 3c 66 09 dd 
 
 ANALYSE ETHERNET : 
 
-	Destination host address : 1c:1b:b5:b3:26:21
-	Source host address : 30:7c:b2:59:e4:29
+	Destination host address : 30:7c:b2:59:e4:29
+	Source host address : 1c:1b:b5:b3:26:21
 
-ANALYSE IPv4
-
-	Version : IPv4
-	Header length : 20 bytes
-	Type of service : 0
-	Total length : 60 bytes
-	Identification : 25768
-	Fragment offset field : 64
-	Time to live : 111
-	Type of following protocol : 6
-	Destination address:192.168.1.34hellllo
-	Source address: 40.77.226.250hellllo
+ANALYSE ipv6
+	Version : 96
+	Next header : 0x6
+	Payload length : 32
+	Hop limit : 64
+	Flow ID : 1610943357
+	Destination adress : cccv 2a03:2880:f02d:e:face:b00c:0:2
+	Source adress : cccv 2a01:cb10:5a2:e100:8d5c:3b8b:3064:b2e0
 
 ANALYSE TCP
 
-	Source port : 443
-	Destination port : 46802
-	Sequence number : 0x3e04489d
-	Acknowledgement number : 0xa8f15a61
-	Data offset : 10
-	 => total size : 40 bytes
-	Flags : 0x12
-		SYN: synchronisation num seq
+	Source port : 44150
+	Destination port : 443
+	Sequence number : 0x90855c79
+	Acknowledgement number : 0x938df017
+	Data offset : 8
+	 => total size : 32 bytes
+	Flags : 0x10
 		ACK: ACK num seq
-	Window : 8192
-	Checksum : 0x8ed8
+	Window : 501
+	Checksum : 0x77c
 	Urgent pointer : 0
 
 ----------------------------------------------------------

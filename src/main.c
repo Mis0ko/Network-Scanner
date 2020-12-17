@@ -4,7 +4,7 @@
 #include "../include/analyse_ethernet.h"
 #include <getopt.h>
 #include <string.h>
-int verbosity = 1;
+int verbosity = 3;
 //compteur de trames
 int trame_cpt;
 

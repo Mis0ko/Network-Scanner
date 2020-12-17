@@ -44,9 +44,10 @@ void eth_packet(const u_char *packet)
 	case ETHERTYPE_IPV6:
 		ipv6_packet(packet + sizeof(struct ether_header));
 		break;
-	// case ETHERTYPE_ARP:
-	// 	arp_packet(packet + sizeof(struct ether_header), eth_hd->ether_shost, eth_hd->ether_dhost);
-	// 	break;
+	case ETHERTYPE_ARP:
+		arp_packet(packet + sizeof(struct ether_header),
+		 eth_hd->ether_shost, eth_hd->ether_dhost);
+		break;
 	default:
 		printf("Type pas encore étudié\n");
 		break;
