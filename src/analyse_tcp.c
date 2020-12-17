@@ -28,7 +28,7 @@ void tcp_packet(const u_char *packet) {
 
 	if (ntohs(tcp_hd->source) == 23 || ntohs(tcp_hd->dest) == 23){
         //telnet_func(packet + tcp_hd->th_off*4);
-        printf("telnet fonction à faire\n");
+        printf("telnet fonction à finir\n");
 	}
 }
 

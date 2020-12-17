@@ -1,8 +1,7 @@
 #include <stdio.h>
 #include <pcap.h>
 #include <netinet/ip.h>
-#include "../include/analyse_udp.h"
-#include "../include/analyse_tcp.h"
+#include "../include/analyse_IPV4.h"
 
 void ipv4_info(const struct ip *ip_hd)
 {
@@ -15,6 +14,10 @@ void ipv4_info(const struct ip *ip_hd)
     printf("\tFragment offset field : %u\n", ip_hd->ip_off);
     printf("\tTime to live : %u\n", ip_hd->ip_ttl);
     printf("\tType of following protocol : %u\n", ip_hd->ip_p);
+    // printf("\tDestination address: %s\n", inet_ntoa(ip_hd->ip_dst));
+    printf("\tDestination address:"); print_ipv4_addr(ip_hd->ip_dst.s_addr);
+    printf("\n\tSource address: "); print_ipv4_addr(ip_hd->ip_src.s_addr);
+    printf("\n");
 }
 
 void ipv4_packet(const u_char *packet)
@@ -25,10 +28,10 @@ void ipv4_packet(const u_char *packet)
     switch (ip_hd->ip_p)
     {
     case 6:
-        tcp_packet(packet+sizeof(struct ip));
+        tcp_packet(packet + sizeof(struct ip));
         break;
     case 17:
-        udp_packet(packet+sizeof(struct ip));
+        udp_packet(packet + sizeof(struct ip));
         break;
     default:
         printf("Type non encore traité\n");

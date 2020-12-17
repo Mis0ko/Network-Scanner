@@ -1,11 +1,10 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <pcap.h>
-#include "../include/main.h"
 #include "../include/analyse_ethernet.h"
 #include <getopt.h>
 #include <string.h>
-
+int verbosity = 1;
 //compteur de trames
 int trame_cpt;
 
@@ -136,7 +135,7 @@ int interf_func(struct opt_struct *os)
     printf("Device is open\n");
     printf("\n");
 
-    if (pcap_loop(handle, 10, got_packet, NULL) == -1)
+    if (pcap_loop(handle, 20, got_packet, NULL) == -1)
     {
         printf("An error happened\n");
         return (2);

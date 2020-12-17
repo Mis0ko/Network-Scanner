@@ -43,7 +43,7 @@ void telnet_opt(const u_char opt)
 void telnet_func(const u_char *packet)
 {
     printf("\nANALYSE TELNET\n");
-    int len = strlen(packet);
+    int len = strlen((const char*)packet);
     printf("Telnet header length : %i bytes\n", len);
     int i = 0;
     //IAC : interpret as command
