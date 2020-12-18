@@ -19,6 +19,7 @@ struct opt_struct
 //Gestion des options
 void opt_func(int opt, struct opt_struct *os)
 {
+    os->live = 1;
     printf("in opt_func\n");
     switch (opt)
     {
@@ -41,7 +42,8 @@ void opt_func(int opt, struct opt_struct *os)
     case 'v':
         printf("Verbosity level : ");
         os->verb = *optarg;
-        printf("%c\n", os->verb);
+        verbosity = atoi(optarg);
+        printf("%i\n", verbosity);
         break;
     default:
         printf("Invalid option\n");
@@ -75,8 +77,9 @@ void got_packet(u_char *args, const struct pcap_pkthdr *header, const u_char *pa
 }
 
 /*
+open a file (its name is already in the struct)
+as a pcap_t file in offline, and read the 
 ouvre un pacap_t à partir d'un file sur la struct
-
 */
 
 int file_func(struct opt_struct *os)
@@ -161,3 +164,10 @@ int main(int argc, char **argv)
 
     return (0);
 }
+
+
+/*
+option v : ok elle marche bien
+option _to ok aussi 
+option -i faudra modifié viteuf la fonction
+*/

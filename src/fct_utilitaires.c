@@ -15,7 +15,7 @@ void print_ipv4_addr(int32_t addr)
     printf("%u.", addr & 0xff);
     printf("%u.", (addr >> 8) & 0xff);
     printf("%u.", (addr >> 16) & 0xff);
-    printf("%u", (addr >> 24) & 0xff);
+    printf("%u\n", (addr >> 24) & 0xff);
     //printf("%s", inet_ntoa(addr));
 }
 
@@ -23,5 +23,5 @@ void print_ipv6_addr(struct in6_addr *addr)
 {
     char addr_dst[INET6_ADDRSTRLEN];
     inet_ntop(AF_INET6, addr, addr_dst, INET6_ADDRSTRLEN);
-    printf("cccv %s", addr_dst);
+    printf("%s\n", addr_dst);
 }

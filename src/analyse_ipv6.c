@@ -10,10 +10,6 @@ void ipv6_info(struct ip6_hdr *hd)
     printf("\tPayload length : %u\n", ntohs(hd->ip6_plen));
     printf("\tHop limit : %u\n", hd->ip6_hlim);
     printf("\tFlow ID : %u\n", htonl(hd->ip6_flow));
-    // char addr_dst[INET6_ADDRSTRLEN];
-    // inet_ntop(AF_INET6, &hd->ip6_dst, addr_dst, INET6_ADDRSTRLEN);
-    // char addr_src[INET6_ADDRSTRLEN];
-    // inet_ntop(AF_INET6, &hd->ip6_src, addr_src, INET6_ADDRSTRLEN);
     printf("\tDestination adress : ");
     print_ipv6_addr(&hd->ip6_dst);
     printf("\n");

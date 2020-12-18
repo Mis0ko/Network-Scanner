@@ -14,10 +14,7 @@ void udp_packet(const u_char *packet) {
 	u_int sport = ntohs(udp_hd->uh_sport);
 	u_int dport = ntohs(udp_hd->uh_dport);
 
-	if((sport==67 && dport==68) || (sport==68 && dport==67))
-        printf("bootp_paquet"); //bootp_packet(packet+sizeof(struct udphdr));
-	else
-		printf("Analyse protocole autre que bootp non disponible\n");
+	process_port(sport, dport, packet + sizeof(struct udphdr));
 }
 
 
