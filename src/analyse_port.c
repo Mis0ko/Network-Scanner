@@ -8,7 +8,7 @@ void process_port(int src, int dst, const u_char *packet)
 {
     packet = packet;
     if (src == PROT_HTTP || dst == PROT_HTTP)
-        printf("on a du http ici");
+        http_packet(packet);
     else if (src == PROT_ECHO || dst == PROT_ECHO)
         printf("on a du echo ici");
     else if (src == PROT_FTP || dst == PROT_FTP)
@@ -21,7 +21,7 @@ void process_port(int src, int dst, const u_char *packet)
         printf("on a du smtp ici");
 
     else if (src == PROT_DNS || dst == PROT_DNS)
-        printf("on a du echo ici");
+        dns_packet(packet);
     else if (src == PROT_BOOTP1 || src == PROT_BOOTP2
             || dst == PROT_BOOTP2 || dst==PROT_BOOTP1)
         bootp_packet(packet);
@@ -32,5 +32,5 @@ void process_port(int src, int dst, const u_char *packet)
     else if (src == PROT_HTTPS || dst == PROT_HTTPS)
         printf("on a du HTTPS ici");
     else 
-        printf("protocole applicatif non pris en compte");
+        printf("protocole applicatif non pris en compte src: %i et dst: %i ", src, dst);
 }

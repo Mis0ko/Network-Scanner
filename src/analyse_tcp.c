@@ -30,6 +30,10 @@ void tcp_packet(const u_char *packet) {
         //telnet_func(packet + tcp_hd->th_off*4);
         printf("telnet fonction à finir\n");
 	}
+	// faut gerer le cas ou ya pas de donnée applicatives
+	process_port(tcp_hd->th_sport, tcp_hd->th_dport, packet + sizeof(struct tcphdr));
+
+
 }
 
 void tcp_info(struct tcphdr* tcp_hd)

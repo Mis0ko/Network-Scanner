@@ -1,0 +1,391 @@
+in opt_func
+Verbosity level : 3
+in opt_func
+Entry file : OCSP-Not_Implemted.cap
+
+TRAME 1
+00 1d a2 e0 59 bb 00 1f 3c d0 69 59 08 00 45 00 00 34 43 4d 40 00 80 06 dd bb 0a ff e4 a9 8c 63 5d af 0f 2c 00 50 ba bd 6b 48 00 00 00 00 80 02 ff ff 60 a1 00 00 02 04 04 ec 01 03 03 02 01 01 04 02 
+
+ANALYSE ETHERNET : 
+
+	Destination host address : 00:1d:a2:e0:59:bb
+	Source host address : 00:1f:3c:d0:69:59
+
+ANALYSE IPv4
+
+	Version : IPv4
+	Header length : 20 bytes
+	Type of service : 0
+	Total length : 52 bytes
+	Identification : 17229
+	Fragment offset field : 64
+	Time to live : 128
+	Type of following protocol : 6
+	Destination address:140.99.93.175
+	Source address: 10.255.228.169
+
+
+ANALYSE TCP
+
+	Source port : 3884
+	Destination port : 80
+	Sequence number : 0xbabd6b48
+	Acknowledgement number : 0x00
+	Data offset : 8
+	 => total size : 32 bytes
+	Flags : 0x02
+		SYN: synchronisation num seq
+	Window : 65535
+	Checksum : 0x60a1
+	Urgent pointer : 0
+protocole applicatif non pris en compte src: 11279 et dst: 20480 
+----------------------------------------------------------
+
+TRAME 2
+00 1f 3c d0 69 59 00 1d a2 e0 59 bb 08 00 45 00 00 34 00 00 40 00 33 06 6e 09 8c 63 5d af 0a ff e4 a9 00 50 0f 2c ff 15 56 4e ba bd 6b 49 80 12 16 d0 f3 dc 00 00 02 04 05 64 01 01 04 02 01 03 03 09 
+
+ANALYSE ETHERNET : 
+
+	Destination host address : 00:1f:3c:d0:69:59
+	Source host address : 00:1d:a2:e0:59:bb
+
+ANALYSE IPv4
+
+	Version : IPv4
+	Header length : 20 bytes
+	Type of service : 0
+	Total length : 52 bytes
+	Identification : 0
+	Fragment offset field : 64
+	Time to live : 51
+	Type of following protocol : 6
+	Destination address:10.255.228.169
+	Source address: 140.99.93.175
+
+
+ANALYSE TCP
+
+	Source port : 80
+	Destination port : 3884
+	Sequence number : 0xff15564e
+	Acknowledgement number : 0xbabd6b49
+	Data offset : 8
+	 => total size : 32 bytes
+	Flags : 0x12
+		SYN: synchronisation num seq
+		ACK: ACK num seq
+	Window : 5840
+	Checksum : 0xf3dc
+	Urgent pointer : 0
+protocole applicatif non pris en compte src: 20480 et dst: 11279 
+----------------------------------------------------------
+
+TRAME 3
+00 1d a2 e0 59 bb 00 1f 3c d0 69 59 08 00 45 00 00 28 43 4e 40 00 80 06 dd c6 0a ff e4 a9 8c 63 5d af 0f 2c 00 50 ba bd 6b 49 ff 15 56 4f 50 10 8e 94 bc 9c 00 00 
+
+ANALYSE ETHERNET : 
+
+	Destination host address : 00:1d:a2:e0:59:bb
+	Source host address : 00:1f:3c:d0:69:59
+
+ANALYSE IPv4
+
+	Version : IPv4
+	Header length : 20 bytes
+	Type of service : 0
+	Total length : 40 bytes
+	Identification : 17230
+	Fragment offset field : 64
+	Time to live : 128
+	Type of following protocol : 6
+	Destination address:140.99.93.175
+	Source address: 10.255.228.169
+
+
+ANALYSE TCP
+
+	Source port : 3884
+	Destination port : 80
+	Sequence number : 0xbabd6b49
+	Acknowledgement number : 0xff15564f
+	Data offset : 5
+	 => total size : 20 bytes
+	Flags : 0x10
+		ACK: ACK num seq
+	Window : 36500
+	Checksum : 0xbc9c
+	Urgent pointer : 0
+protocole applicatif non pris en compte src: 11279 et dst: 20480 
+----------------------------------------------------------
+
+TRAME 4
+00 1d a2 e0 59 bb 00 1f 3c d0 69 59 08 00 45 00 00 f1 43 4f 40 00 80 06 dc fc 0a ff e4 a9 8c 63 5d af 0f 2c 00 50 ba bd 6b 49 ff 15 56 4f 50 18 8e 94 3c 8d 00 00 50 4f 53 54 20 2f 20 48 54 54 50 2f 31 2e 30 0d 0a 43 6f 6e 74 65 6e 74 2d 54 79 70 65 3a 20 61 70 70 6c 69 63 61 74 69 6f 6e 2f 6f 63 73 70 2d 72 65 71 75 65 73 74 0d 0a 43 6f 6e 74 65 6e 74 2d 4c 65 6e 67 74 68 3a 20 31 32 31 0d 0a 0d 0a 30 77 30 75 30 4e 30 4c 30 4a 30 09 06 05 2b 0e 03 02 1a 05 00 04 14 14 a7 e2 19 f4 6b 93 e1 41 25 8f 08 bc 85 76 46 71 f1 36 b0 04 14 ee dd 79 c0 d3 79 b0 4d 7e 47 bc 70 a6 e7 c6 2a ae ba de c9 02 11 00 92 39 d5 34 8f 40 d1 69 5a 74 54 70 e1 f2 3f 43 a2 23 30 21 30 1f 06 09 2b 06 01 05 05 07 30 01 02 04 12 04 10 e5 8e 3b 0b 4f b6 59 85 e4 f9 75 ca f4 45 6e ee 
+
+ANALYSE ETHERNET : 
+
+	Destination host address : 00:1d:a2:e0:59:bb
+	Source host address : 00:1f:3c:d0:69:59
+
+ANALYSE IPv4
+
+	Version : IPv4
+	Header length : 20 bytes
+	Type of service : 0
+	Total length : 241 bytes
+	Identification : 17231
+	Fragment offset field : 64
+	Time to live : 128
+	Type of following protocol : 6
+	Destination address:140.99.93.175
+	Source address: 10.255.228.169
+
+
+ANALYSE TCP
+
+	Source port : 3884
+	Destination port : 80
+	Sequence number : 0xbabd6b49
+	Acknowledgement number : 0xff15564f
+	Data offset : 5
+	 => total size : 20 bytes
+	Flags : 0x18
+		PUSH: receiver must push data to app and doesnt wait the tampon filling
+		ACK: ACK num seq
+	Window : 36500
+	Checksum : 0x3c8d
+	Urgent pointer : 0
+protocole applicatif non pris en compte src: 11279 et dst: 20480 
+----------------------------------------------------------
+
+TRAME 5
+00 1f 3c d0 69 59 00 1d a2 e0 59 bb 08 00 45 00 00 28 b3 c8 40 00 33 06 ba 4c 8c 63 5d af 0a ff e4 a9 00 50 0f 2c ff 15 56 4f ba bd 6c 12 50 10 00 0e 4a 5a 00 00 00 00 00 00 00 00 
+
+ANALYSE ETHERNET : 
+
+	Destination host address : 00:1f:3c:d0:69:59
+	Source host address : 00:1d:a2:e0:59:bb
+
+ANALYSE IPv4
+
+	Version : IPv4
+	Header length : 20 bytes
+	Type of service : 0
+	Total length : 40 bytes
+	Identification : 46024
+	Fragment offset field : 64
+	Time to live : 51
+	Type of following protocol : 6
+	Destination address:10.255.228.169
+	Source address: 140.99.93.175
+
+
+ANALYSE TCP
+
+	Source port : 80
+	Destination port : 3884
+	Sequence number : 0xff15564f
+	Acknowledgement number : 0xbabd6c12
+	Data offset : 5
+	 => total size : 20 bytes
+	Flags : 0x10
+		ACK: ACK num seq
+	Window : 14
+	Checksum : 0x4a5a
+	Urgent pointer : 0
+protocole applicatif non pris en compte src: 20480 et dst: 11279 
+----------------------------------------------------------
+
+TRAME 6
+00 1f 3c d0 69 59 00 1d a2 e0 59 bb 08 00 45 00 00 c4 b3 c9 40 00 33 06 b9 af 8c 63 5d af 0a ff e4 a9 00 50 0f 2c ff 15 56 4f ba bd 6c 12 50 18 00 0e 76 85 00 00 48 54 54 50 2f 31 2e 31 20 35 30 31 0d 0a 53 65 72 76 65 72 3a 20 43 61 63 68 65 46 6c 79 53 65 72 76 65 20 76 32 36 62 0d 0a 44 61 74 65 3a 20 46 72 69 2c 20 31 30 20 4a 75 6e 20 32 30 31 31 20 31 33 3a 30 30 3a 31 31 20 47 4d 54 0d 0a 43 6f 6e 74 65 6e 74 2d 54 79 70 65 3a 20 74 65 78 74 2f 68 74 6d 6c 0d 0a 43 6f 6e 6e 65 63 74 69 6f 6e 3a 20 63 6c 6f 73 65 0d 0a 0d 0a 3c 68 31 3e 4d 65 74 68 6f 64 20 4e 6f 74 20 49 6d 70 6c 65 6d 65 6e 74 65 64 3c 2f 68 31 3e 
+
+ANALYSE ETHERNET : 
+
+	Destination host address : 00:1f:3c:d0:69:59
+	Source host address : 00:1d:a2:e0:59:bb
+
+ANALYSE IPv4
+
+	Version : IPv4
+	Header length : 20 bytes
+	Type of service : 0
+	Total length : 196 bytes
+	Identification : 46025
+	Fragment offset field : 64
+	Time to live : 51
+	Type of following protocol : 6
+	Destination address:10.255.228.169
+	Source address: 140.99.93.175
+
+
+ANALYSE TCP
+
+	Source port : 80
+	Destination port : 3884
+	Sequence number : 0xff15564f
+	Acknowledgement number : 0xbabd6c12
+	Data offset : 5
+	 => total size : 20 bytes
+	Flags : 0x18
+		PUSH: receiver must push data to app and doesnt wait the tampon filling
+		ACK: ACK num seq
+	Window : 14
+	Checksum : 0x7685
+	Urgent pointer : 0
+protocole applicatif non pris en compte src: 20480 et dst: 11279 
+----------------------------------------------------------
+
+TRAME 7
+00 1f 3c d0 69 59 00 1d a2 e0 59 bb 08 00 45 00 00 28 b3 ca 40 00 33 06 ba 4a 8c 63 5d af 0a ff e4 a9 00 50 0f 2c ff 15 56 eb ba bd 6c 12 50 11 00 0e 49 bd 00 00 00 00 00 00 00 00 
+
+ANALYSE ETHERNET : 
+
+	Destination host address : 00:1f:3c:d0:69:59
+	Source host address : 00:1d:a2:e0:59:bb
+
+ANALYSE IPv4
+
+	Version : IPv4
+	Header length : 20 bytes
+	Type of service : 0
+	Total length : 40 bytes
+	Identification : 46026
+	Fragment offset field : 64
+	Time to live : 51
+	Type of following protocol : 6
+	Destination address:10.255.228.169
+	Source address: 140.99.93.175
+
+
+ANALYSE TCP
+
+	Source port : 80
+	Destination port : 3884
+	Sequence number : 0xff1556eb
+	Acknowledgement number : 0xbabd6c12
+	Data offset : 5
+	 => total size : 20 bytes
+	Flags : 0x11
+		FIN: fin de transmission
+		ACK: ACK num seq
+		URG: Urgent data pointer field is used
+	Window : 14
+	Checksum : 0x49bd
+	Urgent pointer : 0
+protocole applicatif non pris en compte src: 20480 et dst: 11279 
+----------------------------------------------------------
+
+TRAME 8
+00 1d a2 e0 59 bb 00 1f 3c d0 69 59 08 00 45 00 00 28 43 50 40 00 80 06 dd c4 0a ff e4 a9 8c 63 5d af 0f 2c 00 50 ba bd 6c 12 ff 15 56 ec 50 10 8e 6d bb 5d 00 00 
+
+ANALYSE ETHERNET : 
+
+	Destination host address : 00:1d:a2:e0:59:bb
+	Source host address : 00:1f:3c:d0:69:59
+
+ANALYSE IPv4
+
+	Version : IPv4
+	Header length : 20 bytes
+	Type of service : 0
+	Total length : 40 bytes
+	Identification : 17232
+	Fragment offset field : 64
+	Time to live : 128
+	Type of following protocol : 6
+	Destination address:140.99.93.175
+	Source address: 10.255.228.169
+
+
+ANALYSE TCP
+
+	Source port : 3884
+	Destination port : 80
+	Sequence number : 0xbabd6c12
+	Acknowledgement number : 0xff1556ec
+	Data offset : 5
+	 => total size : 20 bytes
+	Flags : 0x10
+		ACK: ACK num seq
+	Window : 36461
+	Checksum : 0xbb5d
+	Urgent pointer : 0
+protocole applicatif non pris en compte src: 11279 et dst: 20480 
+----------------------------------------------------------
+
+TRAME 9
+00 1d a2 e0 59 bb 00 1f 3c d0 69 59 08 00 45 00 00 28 43 51 40 00 80 06 dd c3 0a ff e4 a9 8c 63 5d af 0f 2c 00 50 ba bd 6c 12 ff 15 56 ec 50 11 8e 6d bb 5c 00 00 
+
+ANALYSE ETHERNET : 
+
+	Destination host address : 00:1d:a2:e0:59:bb
+	Source host address : 00:1f:3c:d0:69:59
+
+ANALYSE IPv4
+
+	Version : IPv4
+	Header length : 20 bytes
+	Type of service : 0
+	Total length : 40 bytes
+	Identification : 17233
+	Fragment offset field : 64
+	Time to live : 128
+	Type of following protocol : 6
+	Destination address:140.99.93.175
+	Source address: 10.255.228.169
+
+
+ANALYSE TCP
+
+	Source port : 3884
+	Destination port : 80
+	Sequence number : 0xbabd6c12
+	Acknowledgement number : 0xff1556ec
+	Data offset : 5
+	 => total size : 20 bytes
+	Flags : 0x11
+		FIN: fin de transmission
+		ACK: ACK num seq
+		URG: Urgent data pointer field is used
+	Window : 36461
+	Checksum : 0xbb5c
+	Urgent pointer : 0
+protocole applicatif non pris en compte src: 11279 et dst: 20480 
+----------------------------------------------------------
+
+TRAME 10
+00 1f 3c d0 69 59 00 1d a2 e0 59 bb 08 00 45 00 00 28 b3 cb 40 00 33 06 ba 49 8c 63 5d af 0a ff e4 a9 00 50 0f 2c ff 15 56 ec ba bd 6c 13 50 10 00 0e 49 bc 00 00 00 00 00 00 00 00 
+
+ANALYSE ETHERNET : 
+
+	Destination host address : 00:1f:3c:d0:69:59
+	Source host address : 00:1d:a2:e0:59:bb
+
+ANALYSE IPv4
+
+	Version : IPv4
+	Header length : 20 bytes
+	Type of service : 0
+	Total length : 40 bytes
+	Identification : 46027
+	Fragment offset field : 64
+	Time to live : 51
+	Type of following protocol : 6
+	Destination address:10.255.228.169
+	Source address: 140.99.93.175
+
+
+ANALYSE TCP
+
+	Source port : 80
+	Destination port : 3884
+	Sequence number : 0xff1556ec
+	Acknowledgement number : 0xbabd6c13
+	Data offset : 5
+	 => total size : 20 bytes
+	Flags : 0x10
+		ACK: ACK num seq
+	Window : 14
+	Checksum : 0x49bc
+	Urgent pointer : 0
+protocole applicatif non pris en compte src: 20480 et dst: 11279 
+----------------------------------------------------------

@@ -25,3 +25,18 @@ void print_ipv6_addr(struct in6_addr *addr)
     inet_ntop(AF_INET6, addr, addr_dst, INET6_ADDRSTRLEN);
     printf("%s\n", addr_dst);
 }
+
+/* affiche en ascii */
+void print_ascii(char *str)
+{
+    char *p;
+
+    for (p = str; p != NULL; p++)
+    {
+        if (isprint(*p))
+            printf("%c", *p);
+        else
+            printf(".");
+    }
+    printf("\n");
+}
