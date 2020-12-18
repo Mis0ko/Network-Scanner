@@ -38,13 +38,11 @@ void print_dns_short(const u_char *packet, int overTCP)
         packet += 2;
 
     dns_hd = (struct dnshdr *)packet;
-    printf("DNS: \t\t");
+    printf("ANALYSE DNS: \t\t");
 
     // affichage type d'opération
     print_operation_type(dns_hd->opcode);
 }
-
-
 
 void print_dns_full(const u_char *packet, int overTCP)
 {
@@ -55,8 +53,7 @@ void print_dns_full(const u_char *packet, int overTCP)
     if (packet == NULL)
         return;
 
-    printf("DNS\n");
-
+    printf("ANALYSE DNS\n");
     // Si over TCP, les 2 premiers octets représentent la taille
     if (overTCP)
     {
@@ -66,7 +63,7 @@ void print_dns_full(const u_char *packet, int overTCP)
     }
 
     dns_hd = (struct dnshdr *)packet;
-    bakptr = (char*)packet;
+    bakptr = (char *)packet;
 
     // identifiant
     printf("\tTransaction ID: 0x%x", ntohs(dns_hd->id));
@@ -91,11 +88,9 @@ void print_dns_full(const u_char *packet, int overTCP)
     printf("\tTruncated: %d", dns_hd->tc);
     printf("\n");
 
-    // RD (Recursion Desired)
     printf("\tRecursion desired: %d", dns_hd->rd);
     printf("\n");
 
-    // RA (Recursion Available)
     printf("\tRecursion available: %d", dns_hd->ra);
     printf("\n");
 
@@ -103,7 +98,6 @@ void print_dns_full(const u_char *packet, int overTCP)
     printf("\tZ (future use): %d", ntohs(dns_hd->zero));
     printf("\n");
 
-    // AA (Answer Authentification)
     printf("\tAnswer Authentification: %d", dns_hd->aa);
     printf("\n");
 
@@ -130,11 +124,10 @@ void print_dns_full(const u_char *packet, int overTCP)
     printf("\tAuthority RRs: %d", ntohs(dns_hd->nscount));
     printf("\n");
 
-    // ADCOUNT
     printf("\tAdditional RRs: %d", ntohs(dns_hd->adcount));
     printf("\n");
 
-    // on saute le header dans packet
+    // we jump the header in the packet
     packet += sizeof(struct dnshdr); //DNS_dns_hd_SIZE;
 
     // Queries
@@ -144,12 +137,12 @@ void print_dns_full(const u_char *packet, int overTCP)
         for (int i = 0; i < ntohs(dns_hd->qcount); i++)
         {
             printf("\n\t\t > ");
-            // parser tous les labels du nom de domaine
+            // parser all domain name labels
             while (packet[0] != 0)
             {
                 lg = packet[0];
                 packet++;
-                // affichage du label octet par octet
+                // print label byte by byte
                 for (int j = 0; j < lg; j++)
                 {
                     printf("%c", packet[0]);
@@ -158,10 +151,10 @@ void print_dns_full(const u_char *packet, int overTCP)
                 printf(".");
             }
 
-            // ignorer le caractère NULL qui marque la fin du DN
+            // ignore the NULL caracter that end the DN
             packet++;
 
-            // affichage des informations sur le DN
+            // print info on the DN
             printf("\n");
             type = (short *)packet;
             printf("\t\t\t  query type: %d\n", ntohs(*type));
@@ -178,10 +171,10 @@ void print_dns_full(const u_char *packet, int overTCP)
 
     for (int i = 0; i < dns_hd->adcount + dns_hd->ancount; i++)
     {
-        // checker si pointeur vers DN = les deux premiers bits à 1
+        // check if pointer to DN = the first 2 bits at 1
         if ((u_char)packet[0] >= 192)
         {
-            printf ("/!\\pointer");
+            printf("/!\\pointer");
             packet += 2;
         }
         else
@@ -190,7 +183,7 @@ void print_dns_full(const u_char *packet, int overTCP)
             {
                 lg = packet[0];
                 packet++;
-                // affichage du label octet par octet
+                // print label byte by byte
                 for (int j = 0; j < lg; j++)
                 {
                     printf("%c", packet[0]);
@@ -198,36 +191,36 @@ void print_dns_full(const u_char *packet, int overTCP)
                 }
                 printf(".");
             }
-            if(bakptr) {}
+            if (bakptr)
+            {
+            }
         }
-        
-        // ignorer le caractère NULL qui marque la fin du DN
+
+        // ignore the NULL caractere that end the DN
         packet++;
 
         // Parser type
         type = (short *)packet;
         printf("\n\t\t > Type: %d", ntohs(*type));
         packet += 2;
-        
-        return; // on arrete là, car pas eu le temps de finir
+
+        return; // I stop here, I didnt have time to finish
 
         // parser class / TL / RDLength et RDATA pas encore fait
         packet += 2;
         packet += 8;
         packet += 4;
-        packet += 4; // peut être variable
-
+        packet += 4; // can be variable
     }
-
     printf("\n");
 }
 
-
-void dns_packet(const u_char * packet){
-    if(verbosity == 3)
+void dns_packet(const u_char *packet)
+{
+    if (verbosity == 3)
         print_dns_full(packet, 0);
     else if (verbosity == 2)
         print_dns_short(packet, 0);
-    else if (verbosity==1)
-        printf("DNS Protocol, improve verbosity for details");
+    else if (verbosity == 1)
+        printf(":DNS");
 }

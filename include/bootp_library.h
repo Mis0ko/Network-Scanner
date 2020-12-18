@@ -217,6 +217,5 @@ struct cmu_vend {
 	u_int8_t	v_unused[24];	/* currently unused */
 };
 
-
 /* v_flags values */
 #define VF_SMASK	1	/* Subnet mask field contains valid data */

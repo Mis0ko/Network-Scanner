@@ -69,8 +69,8 @@ struct  dnshdr{
 
 
 /*
-    fonctionnalité  du DNS-over-TCP implémenté mais pas encore utilisée.
-    seulement 2 modes d'affichage : full et short
+    fonctionnalité  du DNS-over-TCP implemented but not used
+    only 2 display modes : full & short
 */
 void print_operation_type(uint16_t opcode);
 void print_dns_short(const u_char *packet, int overTCP);

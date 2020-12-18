@@ -16,7 +16,6 @@ void print_ipv4_addr(int32_t addr)
     printf("%u.", (addr >> 8) & 0xff);
     printf("%u.", (addr >> 16) & 0xff);
     printf("%u\n", (addr >> 24) & 0xff);
-    //printf("%s", inet_ntoa(addr));
 }
 
 void print_ipv6_addr(struct in6_addr *addr)
@@ -27,16 +26,29 @@ void print_ipv6_addr(struct in6_addr *addr)
 }
 
 /* affiche en ascii */
-void print_ascii(char *str)
+void print_ascii(const u_char *str, u_char *end)
 {
-    char *p;
-
-    for (p = str; p != NULL; p++)
+    u_char *p = (u_char *)str;
+    for (; p != (end - 1); p++)
     {
         if (isprint(*p))
             printf("%c", *p);
         else
             printf(".");
     }
+    printf("\n");
+}
+
+/*
+    print in ASCII until the char* until that is inside the 
+    line
+*/
+void print_ascii_until(const u_char *line, const char *until)
+{
+    char *end = strstr((const char *)line, until);
+    if (end == NULL)
+        return;
+
+    print_ascii(line, (u_char *)end);
     printf("\n");
 }

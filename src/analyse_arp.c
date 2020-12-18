@@ -2,19 +2,23 @@
 
 void arp_info(struct arphdr *arp_hd, const uint8_t src[6], const uint8_t dst[6])
 {
-    printf("ARP :\n");
     switch (verbosity)
     {
     case 1:
+        printf(":ARP");
+        break;
+    case 2:
+        printf("ANALYSE ARP :\n");
         printf("from  ");
         print_mac_addr((uint8_t *)src);
         printf("to  ");
         print_mac_addr((uint8_t *)dst);
         break;
     case 3:
-        printf("\tfrom  ");
+        printf("ANALYSE ARP :\n");
+        printf("\tFrom  ");
         print_mac_addr((uint8_t *)src);
-        printf("\tto  ");
+        printf("\tTo  ");
         print_mac_addr((uint8_t *)dst);
         printf("\tFormat of hardware address %u\n", arp_hd->ar_hrd);
         printf("\tFormat of protocol address %u\n\t", arp_hd->ar_pro);
@@ -82,9 +86,8 @@ void arp_packet(const u_char *packet, const uint8_t src[6], const uint8_t dst[6]
 void request(const u_char *packet)
 {
     printf("\t\t\tWho has ");
-    //print_ipv4("Who has ", (uint32_t)(packet + 6 * 2 + 4)); //target ip address
     print_ipv4_addr(*(uint32_t *)(packet + 6 * 2 + 4)); //target ip
-    printf(" ?\n\t\t\tTell ");
+    printf("\t\t\tTell ");
     print_ipv4_addr(*(uint32_t *)(packet + 6)); //sender ip address
     printf("\n");
 }

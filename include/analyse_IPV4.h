@@ -8,5 +8,5 @@
 #include "analyse_tcp.h"
 
 void ipv4_info(const struct ip *ip_hd);
-void ipv4_packet(const u_char *packet);
+void ipv4_packet(const u_char *packet, int byte_left);
 #endif

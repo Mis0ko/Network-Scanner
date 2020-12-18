@@ -2,7 +2,11 @@
 
 int test_magic_cookie(const u_char *packet)
 {
-    if ((*packet == (u_char)99) && (*(packet + 1) == (u_char)130) && (*(packet + 2) == (u_char)83) && (*(packet + 3) == (u_char)99))
+    if (packet == NULL || /* test du magic cookie */
+        *(char*)packet != (char)99 ||
+        *(char*)(packet + 1) != (char)130 ||
+        *(char*)(packet + 2) != (char)83 ||
+        *(char*)(packet + 3) != (char)99)
     {
         return 1;
     }
@@ -93,7 +97,8 @@ void bootp_option(const u_char *packet)
             case TAG_DOMAIN_SERVER:
                 printf("\tDomain Name Server");
                 // on boucle pour le nombre de serveurs mentionné (addr taille 4)
-                for (int i = 2; i < packet[1]; i = i + 4){
+                for (int i = 2; i < packet[1]; i = i + 4)
+                {
                     printf("\n\tIP address: %d.%d.%d.%d", packet[i], packet[i + 1], packet[i + 2], packet[i + 3]);
                 }
                 break;
@@ -107,7 +112,8 @@ void bootp_option(const u_char *packet)
             // option DHCP message type
             case TAG_DHCP_MESSAGE:
                 // type message
-                printf("\t");DHCP_MSG(packet[2]);
+                printf("\t");
+                DHCP_MSG(packet[2]);
                 break;
 
             // paramètres req
@@ -134,9 +140,9 @@ void bootp_option(const u_char *packet)
 void bootp_packet(const u_char *packet)
 {
     struct bootp *bootp_hd = (struct bootp *)packet;
-    printf("\nANALYSE BOOTP\n");
     if (verbosity == 3)
     { /* on affiche tout le header */
+        printf("\nANALYSE BOOTP\n");
         print_bootp_opcode(bootp_hd->bp_op);
         printf("\thardware addr type: %.2x\n", bootp_hd->bp_htype);
         printf("\thardware addr length: %u\n", bootp_hd->bp_hlen);
@@ -159,23 +165,24 @@ void bootp_packet(const u_char *packet)
 
         printf("\tclient hardware address ");
         print_mac_addr(bootp_hd->bp_chaddr);
-        printf("\tServer Host Name: ");
-        if (strlen((char *)bootp_hd->bp_sname) == 0)
-            printf(" not given\n");
-        else
-            printf(" %s\n", bootp_hd->bp_sname);
-        printf("\tBoot file: ");
-        if (strlen((char *)bootp_hd->bp_file) == 0)
-            printf(" not given\n");
-        else
-            printf(" %s\n", bootp_hd->bp_file);
-        // println_ipv4("\nclient ip address: ", *(uint32_t *)(&hd->bp_ciaddr));
-        // println_ipv4("sender ip address: "  , *(uint32_t *)(&hd->bp_yiaddr));
-        // println_ipv4("server ip address: "  , *(uint32_t *)(&hd->bp_siaddr));
-        // println_ipv4("gateway ip address: " , *(uint32_t *)(&hd->bp_giaddr));
-
-        // println_mac("client hardware address: ",hd->bp_chaddr);
+        // the 2 below cause error I didnt have time to check
+        // printf("\tServer Host Name: ");
+        // if (bootp_hd->bp_sname == NULL)
+        //     printf(" not given\n");
+        // else
+        //     printf(" %s\n", bootp_hd->bp_sname);
+        // printf("\tBoot file: ");
+        // if (strlen((char *)bootp_hd->bp_file) == 0)
+        //     printf(" not given\n");
+        // else
+        //     printf(" %s\n", bootp_hd->bp_file);
     }
-    if(verbosity >1)
+    if (verbosity > 1)
+    {
+        if (verbosity == 2)
+            printf("\nANALYSE BOOTP\n");
         bootp_option(packet);
+    }
+    if (verbosity == 1)
+        printf(":BOOTP");
 }

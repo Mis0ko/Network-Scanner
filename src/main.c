@@ -4,19 +4,21 @@
 #include "../include/analyse_ethernet.h"
 #include <getopt.h>
 #include <string.h>
+
 int verbosity = 3;
-//compteur de trames
+
+//packet cpt
 int trame_cpt;
 
 struct opt_struct
 {
-    int live; //analyse offline ou non
+    int live; //analyse offline or online
     char *interface;
-    char *file;  //nom de fichier
-    u_char verb; //verbosité
+    char *file;  //input file_name
+    u_char verb; //verbosity
 };
 
-//Gestion des options
+
 void opt_func(int opt, struct opt_struct *os)
 {
     os->live = 1;
@@ -27,7 +29,6 @@ void opt_func(int opt, struct opt_struct *os)
         printf("Interface for live analysis: ");
         os->interface = optarg;
         printf("%s\n", os->interface);
-        os->live = 1;
         break;
     case 'o':
         printf("Entry file : ");
@@ -58,9 +59,8 @@ pcap_pkthdr
     len (packet)
 
 args = state of the current session
-
 */
-//pcap_pkthrdr dans pcap.h, pour les entetes des paquets
+
 void got_packet(u_char *args, const struct pcap_pkthdr *header, const u_char *packet)
 {
     //affichage paquets puis analyse
@@ -72,7 +72,7 @@ void got_packet(u_char *args, const struct pcap_pkthdr *header, const u_char *pa
     }
     printf("\n");
     trame_cpt++;
-    eth_packet(packet);
+    eth_packet(packet, header->len);
     args = args; // à enlever
 }
 
@@ -101,13 +101,12 @@ int file_func(struct opt_struct *os)
 
 /*
 open an interface intro a pcap_t file and collect a group of packet
-(5packet) with pcap_loop.
+with pcap_loop (infinity loop)
 */
 int interf_func(struct opt_struct *os)
 {
     char error[PCAP_ERRBUF_SIZE];
-    pcap_if_t *interfaces;//, *temp;
-    //int i = 0;
+    pcap_if_t *interfaces;
     char errbuf[PCAP_ERRBUF_SIZE];
 
     if (pcap_findalldevs(&interfaces, error) == -1)
@@ -115,20 +114,40 @@ int interf_func(struct opt_struct *os)
         printf("\nerror in pcap findall devs");
         return -1;
     }
-    printf("\n the interfaces present on the system are:");
-    os->interface = malloc(sizeof(strlen(interfaces->name)));
-    strcpy(os->interface, interfaces->name);
-    printf("voici ce qu'on stock %s\n", os->interface);
+    printf("\nthe interfaces present on the system are :\n");
+    /*
+    we store the first interface for the case the user
+    give us a interface that doesnt exist.
+    */
+    char default_interface[100];
+    strcpy(default_interface, interfaces->name);
+
+    int inter_present=0;
+    for (pcap_if_t *temp; interfaces->next != NULL && temp != NULL; temp = interfaces)
+    {
+        if(!strcmp(interfaces->name, os->interface)){
+            inter_present =1;
+            break;
+        }
+        printf("\t%s\n", interfaces->name);
+        interfaces = interfaces->next;
+    }
+    if(inter_present==1)
+        printf("interface asked present\n");
+    else{
+        printf("\nYour interface isn't valid, The default interface was chosen\n");
+        printf("\nthe default interface: %s\n", default_interface);
+        os->interface = default_interface;
+    }
     if (os->interface == NULL)
     {
         printf("Couldn't find default device: %s\n", errbuf);
         return (2);
     }
 
-    printf("Device: %s\n", os->interface);
+    printf("Device Chosen: %s\n", os->interface);
 
     pcap_t *handle;
-
     handle = pcap_open_live(os->interface, BUFSIZ, 1, 1000, errbuf);
     if (handle == NULL)
     {
@@ -138,7 +157,7 @@ int interf_func(struct opt_struct *os)
     printf("Device is open\n");
     printf("\n");
 
-    if (pcap_loop(handle, 20, got_packet, NULL) == -1)
+    if (pcap_loop(handle, -1, got_packet, NULL) == -1)
     {
         printf("An error happened\n");
         return (2);
@@ -164,10 +183,3 @@ int main(int argc, char **argv)
 
     return (0);
 }
-
-
-/*
-option v : ok elle marche bien
-option _to ok aussi 
-option -i faudra modifié viteuf la fonction
-*/

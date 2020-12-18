@@ -5,6 +5,7 @@
 #include <string.h>
 #include "fct_utilitaires.h"
 #include "bootp_library.h"
+
 int test_magic_cookie(const u_char* packet);
 void DHCP_MSG(uint8_t MSG_DHCP);
 void print_bootp_opcode(uint8_t opcode);

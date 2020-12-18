@@ -7,5 +7,5 @@
 #include "analyse_port.h"
 
 void udp_info(const struct udphdr* udp_hd);
-void udp_packet(const u_char *packet);
+void udp_packet(const u_char *packet, int byte_left);
 #endif

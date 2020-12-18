@@ -1,23 +1,27 @@
 #include "../include/analyse_http.h"
 
-void http_packet(const u_char *packet)
+void http_packet(const u_char *packet, int byte_left)
 {
-    http_info(packet);
+    http_info(packet, (u_char *)(packet + byte_left), byte_left);
 }
 
-void http_info(const u_char *packet)
+void http_info(const u_char *packet, u_char *end, int byte_left)
 {
-    printf("\nANALYSE HTTP \n\t");
     switch (verbosity)
     {
     case 1:
-        http_medium(packet); 
+        printf(":HTTP");
         break;
     case 2:
+        printf("\nANALYSE HTTP \n\t");
         http_medium(packet);
         break;
     case 3:
-        print_ascii((char*)packet); /* on affiche l'intégralité du packet */
+        printf("\nANALYSE HTTP \n\t");
+        if (byte_left != 0)
+            print_ascii((u_char *)packet, end); /* display the whole packet */
+        else
+            http_medium(packet);
         break;
     }
 }
