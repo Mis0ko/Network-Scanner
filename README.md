@@ -1,4 +1,4 @@
-# Network Services
+# Network Scanner
 
 By [Michael Hofmann](https://github.com/Mis0ko) <br/>
 Last update : 12/18/2020.
